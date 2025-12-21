@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmgfhcoc2gh2h"]
+
+[ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://new stuff/nest_player_new.gd" id="1_jopcf"]
+[ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="3_gu13x"]
+[ext_resource type="Script" uid="uid://dv1adnd1cttfc" path="res://characters/player/player_health.gd" id="4_gal6n"]
+[ext_resource type="AudioStream" uid="uid://xpgxkeb3xa26" path="res://audio/Footstep_Dirt_03.wav" id="5_puh7n"]
+[ext_resource type="Script" uid="uid://dsmy2j4brlr3k" path="res://characters/player/place_dot.gd" id="6_cjnno"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_syiot"]
+radius = 0.258299
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3dcp"]
+bg_color = Color(0.843137, 0.211765, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iru6a"]
+bg_color = Color(0.458824, 0.780392, 0.313726, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iru6a"]
+
+[node name="Node3D" type="CharacterBody3D" groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_jopcf")
+
+[node name="nest" parent="." instance=ExtResource("3_gu13x")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_syiot")
+
+[node name="cameraPivot" type="Node3D" parent="CollisionShape3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12305, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CollisionShape3D/cameraPivot"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, -0.789, -1)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D/cameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+current = true
+
+[node name="health" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "collision_area")]
+script = ExtResource("4_gal6n")
+progress_bar = NodePath("../MarginContainer/ProgressBar")
+collision_area = NodePath("../Area3D")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 198.0
+offset_bottom = 62.0
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_m3dcp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iru6a")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3.11, 0, 0, 0, 3.11, 0, 0, 0, 3.11, 0, 1, 0)
+shape = SubResource("SphereShape3D_iru6a")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="can_dash_timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_puh7n")
+volume_db = -20.18
+
+[node name="place_point" type="Node" parent="."]
+script = ExtResource("6_cjnno")
+
+[connection signal="body_entered" from="Area3D" to="health" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="health" method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="can_dash_timer" to="." method="_on_can_dash_timer_timeout"]
+
+[editable path="nest"]
+[editable path="nest/nest temp"]

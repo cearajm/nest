@@ -1,0 +1,29 @@
+[gd_resource type="Terrain3DAssets" load_steps=6 format=3 uid="uid://bofbru8kg76y2"]
+
+[ext_resource type="Texture2D" uid="uid://b21j4v6dm78hj" path="res://terrain/textures/grass 004/packed_albedo_height.png" id="1_m2va4"]
+[ext_resource type="Texture2D" uid="uid://163ohmshf3of" path="res://terrain/textures/grass 004/packed_normal_roughness.png" id="2_5xgai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txh2f"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 85.0
+distance_fade_max_distance = 75.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_a2eux"]
+material_override = SubResource("StandardMaterial3D_txh2f")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_lt3of"]
+name = "Grass004 64"
+albedo_color = Color(0.454514, 0.513075, 0.574945, 1)
+albedo_texture = ExtResource("1_m2va4")
+normal_texture = ExtResource("2_5xgai")
+detiling = 0.532
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_a2eux")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_lt3of")])

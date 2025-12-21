@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clt7sdfngg1u5"]
+
+[ext_resource type="PackedScene" uid="uid://cbi4sknbxk5u3" path="res://assets/temple.glb" id="1_ar1av"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="temple" parent="." instance=ExtResource("1_ar1av")]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dix512uki3ujj"]
+
+[ext_resource type="Texture2D" uid="uid://dp3dir42cm5qj" path="res://inventory/icons/inventory slot.png" id="1_dfngl"]
+[ext_resource type="Script" uid="uid://56ljlr6gxrq3" path="res://inventory/scripts/inv_ui_slot.gd" id="1_fcwim"]
+
+[node name="inv_ui_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(70, 70)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1052.0
+offset_bottom = -578.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fcwim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.45833, 1.45833)
+texture = ExtResource("1_dfngl")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 12.0
+offset_bottom = 17.0
+scale = Vector2(2, 2)
+horizontal_alignment = 2
+
+[node name="item_options" type="Panel" parent="."]
+z_index = 1
+layout_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="item_options"]
+layout_mode = 0
+offset_right = 107.0
+offset_bottom = 66.0
+
+[node name="use" type="Button" parent="item_options/VBoxContainer"]
+layout_mode = 2
+text = "use"
+
+[node name="idk" type="Button" parent="item_options/VBoxContainer"]
+layout_mode = 2
+text = "idk"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="item_options/VBoxContainer/use" to="." method="_on_use_pressed"]

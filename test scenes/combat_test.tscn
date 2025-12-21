@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwwjp2jk4rhd2"]
+
+[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/player/nest_player.tscn" id="1_gwau5"]
+[ext_resource type="PackedScene" uid="uid://bjtabrbxneck5" path="res://characters/enemy/enemy.tscn" id="3_d0ie8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjsyn"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_joit0"]
+sky_material = SubResource("ProceduralSkyMaterial_fjsyn")
+
+[sub_resource type="Environment" id="Environment_0gjip"]
+background_mode = 2
+sky = SubResource("Sky_joit0")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pf5rh"]
+vertices = PackedVector3Array(-24.5, 0.436068, -24.5, -24.5, 0.436068, 24.5, 24.5, 0.436068, 24.5, 24.5, 0.436068, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0gjip")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="nest_player" parent="." instance=ExtResource("1_gwau5")]
+
+[node name="enemy" parent="." instance=ExtResource("3_d0ie8")]
+transform = Transform3D(-1, 0, -1.19209e-07, 0, 1, 0, 1.19209e-07, 0, -1, -2.19839, -0.0545555, 8.64464)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pf5rh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.188932, 0)
+use_collision = true
+size = Vector3(50, 0.25, 50)

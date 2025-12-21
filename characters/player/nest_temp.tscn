@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://tr47xks2bmco"]
+
+[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_a18bm"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="nest temp" parent="." instance=ExtResource("1_a18bm")]

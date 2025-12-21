@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddofe7ijaawg2"]
+
+[ext_resource type="Script" uid="uid://bppfl3bxah736" path="res://test scenes/shell_box.gd" id="1_wwl1l"]
+[ext_resource type="Resource" uid="uid://badnl45betc3g" path="res://inventory/shell_box_inventory.tres" id="2_0yvq8"]
+[ext_resource type="PackedScene" uid="uid://b5emnd4tj3ar1" path="res://inventory/shell_box_inv_ui.tscn" id="3_0yvq8"]
+[ext_resource type="Script" uid="uid://cgo8s1y54osvm" path="res://inventory/scripts/shell_box_inv_ui.gd" id="4_puxv0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_puxv0"]
+radius = 2.0
+
+[node name="shell_box" type="Node3D"]
+script = ExtResource("1_wwl1l")
+inventory = ExtResource("2_0yvq8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+use_collision = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_puxv0")
+
+[node name="shell_box_inv_ui" parent="." instance=ExtResource("3_0yvq8")]
+script = ExtResource("4_puxv0")
+inventory = ExtResource("2_0yvq8")
+
+[connection signal="body_entered" from="Area3D" to="shell_box_inv_ui" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="shell_box_inv_ui" method="_on_area_3d_body_exited"]

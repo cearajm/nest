@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfy0c2m54at3n"]
+
+[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/player/nest_player.tscn" id="4_0vvhk"]
+[ext_resource type="PackedScene" uid="uid://clt7sdfngg1u5" path="res://assets/temple.tscn" id="5_0lgua"]
+[ext_resource type="PackedScene" uid="uid://dm8v8jx3bhn7q" path="res://terrain/terrain_test.tscn" id="6_oqy01"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pfxxk"]
+sky_top_color = Color(0.0535775, 0.0849922, 0.302925, 1)
+sky_horizon_color = Color(0.274052, 0.460002, 0.573937, 1)
+ground_bottom_color = Color(0.534883, 0.567541, 0.726393, 1)
+ground_horizon_color = Color(0.274052, 0.460002, 0.573937, 1)
+ground_curve = 0.171483
+
+[sub_resource type="Sky" id="Sky_rpe3e"]
+sky_material = SubResource("ProceduralSkyMaterial_pfxxk")
+
+[sub_resource type="Environment" id="Environment_8hjng"]
+background_mode = 2
+sky = SubResource("Sky_rpe3e")
+ambient_light_source = 3
+ambient_light_color = Color(0.724749, 0.591333, 0.725951, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.72007, 0.797595, 0.845231, 1)
+fog_light_energy = 0.5
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.026
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8hjng")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.713428, -0.671574, 0.200021, -0.424373, 0.641235, 0.639316, -0.557609, 0.371223, -0.742473, 1.98237, 225.322, 0.194855)
+light_color = Color(0.881132, 0.798968, 0.70867, 1)
+light_energy = 2.219
+light_volumetric_fog_energy = 2.981
+shadow_enabled = true
+
+[node name="Node3D2" parent="." instance=ExtResource("5_0lgua")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 199.27, 6.79723)
+
+[node name="Node3D3" parent="." instance=ExtResource("6_oqy01")]
+
+[node name="Node3D" parent="." instance=ExtResource("4_0vvhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41677, 201.267, -2.43589)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcrvl7pw3pblc"]
+
+[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/nest_player.tscn" id="1_n6otn"]
+[ext_resource type="PackedScene" uid="uid://cemdb32qn1cyc" path="res://inventory/inventory_ui.tscn" id="2_5exwl"]
+[ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="2_7lv4r"]
+[ext_resource type="Script" uid="uid://bxf3i5velkg58" path="res://test scenes/csg_box_3d_2.gd" id="4_gfq8o"]
+[ext_resource type="Resource" uid="uid://b8y3pk26itujo" path="res://inventory/items/hamster.tres" id="5_won1s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n6otn"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_7lv4r"]
+sky_material = SubResource("ProceduralSkyMaterial_n6otn")
+
+[sub_resource type="Environment" id="Environment_5exwl"]
+background_mode = 2
+sky = SubResource("Sky_7lv4r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3nhiu"]
+radius = 2.06814
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5exwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.188932, 0)
+use_collision = true
+size = Vector3(50, 0.25, 50)
+
+[node name="Node3D" parent="." instance=ExtResource("1_n6otn")]
+mouse_sensitivity = null
+move_speed = null
+acceleration = null
+rotation_speed = null
+jump_impulse = null
+
+[node name="inventory ui" parent="." instance=ExtResource("2_5exwl")]
+
+[node name="pause menu" parent="." instance=ExtResource("2_7lv4r")]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52352, 0.728014, 0)
+use_collision = true
+collision_mask = 7
+script = ExtResource("4_gfq8o")
+item = ExtResource("5_won1s")
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D2/Area3D"]
+shape = SubResource("SphereShape3D_3nhiu")
+
+[connection signal="body_entered" from="CSGBox3D2/Area3D" to="CSGBox3D2" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="CSGBox3D2/Area3D" to="CSGBox3D2" method="_on_area_3d_body_exited"]

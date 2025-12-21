@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://v47jrvspo1tn"]
+
+[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/player/nest_player.tscn" id="1_mapqr"]
+[ext_resource type="Material" uid="uid://egcsexaacrx0" path="res://shaders/water_shader.tres" id="2_1phee"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mapqr"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_1phee"]
+sky_material = SubResource("ProceduralSkyMaterial_mapqr")
+
+[sub_resource type="Environment" id="Environment_b128v"]
+background_mode = 2
+sky = SubResource("Sky_1phee")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pf0xs"]
+material = ExtResource("2_1phee")
+
+[node name="water_test" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b128v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(50, 0.25, 50)
+
+[node name="Node3D" parent="." instance=ExtResource("1_mapqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2296, 0, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.337448, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 1.5, 15)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0.337448, 0)
+operation = 2
+size = Vector3(15, 1.5, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGBox3D2"]
+transform = Transform3D(6.905, 0, 0, 0, 6.905, 0, 0, 0, 6.905, 0, 0.257404, 0)
+mesh = SubResource("PlaneMesh_pf0xs")

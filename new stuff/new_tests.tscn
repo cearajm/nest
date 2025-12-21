@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgr0efkrullhg"]
+
+[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new stuff/nest_player_new.tscn" id="1_8vnc5"]
+[ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_y6nrq"]
+[ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="3_fowen"]
+[ext_resource type="Script" uid="uid://clwveaw52upge" path="res://new stuff/chest.gd" id="4_o7u5i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vy8y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_x773i"]
+sky_material = SubResource("ProceduralSkyMaterial_4vy8y")
+
+[sub_resource type="Environment" id="Environment_q8ysp"]
+background_mode = 2
+sky = SubResource("Sky_x773i")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fowen"]
+albedo_texture = ExtResource("1_y6nrq")
+uv1_scale = Vector3(17.965, 17.965, 17.965)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="pause menu" parent="." instance=ExtResource("3_fowen")]
+
+[node name="environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+environment = SubResource("Environment_q8ysp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3673649, 0)
+use_collision = true
+size = Vector3(200, 1, 200)
+material = SubResource("StandardMaterial3D_fowen")
+
+[node name="CSGBox3D" type="CSGCylinder3D" parent="environment/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, 64.06019)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D2" type="CSGCylinder3D" parent="environment/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, -63.945007)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D3" type="CSGCylinder3D" parent="environment/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, -64.927475, 17.25551, 0)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D4" type="CSGCylinder3D" parent="environment/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 64.41022, 17.25551, 0)
+radius = 2.288
+height = 15.197
+
+[node name="player" parent="." instance=ExtResource("1_8vnc5")]
+
+[node name="chest" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.314277, -0.051003933, 0)
+use_collision = true
+script = ExtResource("4_o7u5i")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dafl2515eg0uf"]
+
+[ext_resource type="PackedScene" uid="uid://bcrvl7pw3pblc" path="res://test scenes/inventory_test.tscn" id="1_am0sd"]
+[ext_resource type="Script" uid="uid://sx6w2oyd86ud" path="res://test scenes/main.gd" id="1_rog56"]
+[ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="3_clx23"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_rog56")
+current_scene_packed = ExtResource("1_am0sd")
+
+[node name="inventory_test" parent="." instance=ExtResource("1_am0sd")]
+visible = false
+
+[node name="pause_menu" parent="." instance=ExtResource("3_clx23")]

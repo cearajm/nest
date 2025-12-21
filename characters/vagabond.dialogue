@@ -1,0 +1,11 @@
+~ start
+Vagabond: hello
+
+- hi
+	Vagabond: :)
+- what ? => start
+- get away from me !
+
+Vagabond: i fare thee well.
+	
+=> END
