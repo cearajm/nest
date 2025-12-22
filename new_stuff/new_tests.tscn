@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bgr0efkrullhg"]
 
-[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new stuff/nest_player_new.tscn" id="1_8vnc5"]
+[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player_new.tscn" id="1_8vnc5"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_y6nrq"]
 [ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="3_fowen"]
-[ext_resource type="Script" uid="uid://clwveaw52upge" path="res://new stuff/chest.gd" id="4_o7u5i"]
+[ext_resource type="Script" uid="uid://clwveaw52upge" path="res://new_stuff/chest.gd" id="4_o7u5i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vy8y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,8 +23,6 @@ albedo_texture = ExtResource("1_y6nrq")
 uv1_scale = Vector3(17.965, 17.965, 17.965)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="pause menu" parent="." instance=ExtResource("3_fowen")]
 
 [node name="environment" type="Node" parent="."]
 
@@ -61,6 +59,8 @@ height = 15.197
 transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 64.41022, 17.25551, 0)
 radius = 2.288
 height = 15.197
+
+[node name="pause menu" parent="." instance=ExtResource("3_fowen")]
 
 [node name="player" parent="." instance=ExtResource("1_8vnc5")]
 
