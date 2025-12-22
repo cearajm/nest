@@ -3,13 +3,15 @@ extends Node
 
 @export var starting_state : StateNew
 @export var current_state : StateNew
+@export var cooldown_timer: Timer
 
 
 # initialize by giving each child a reference to parent, enter default starting state
 func init(parent: Player):
 	print("asldkfja")
 	for child in get_children():
-		child.parent = parent
+		if child.get_class() == 'Node':
+			child.parent = parent
 	change_state(starting_state)
 	
 func change_state(new_state : StateNew):
@@ -23,3 +25,10 @@ func _physics_process(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 	if new_state:
 		change_state(new_state)
+
+
+# TODO:
+# add states:
+# freeze
+# run
+# cast
