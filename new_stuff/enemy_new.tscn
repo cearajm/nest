@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5tgvex2v8h3o"]
+
+[ext_resource type="Script" uid="uid://ccg7ow1jbo36f" path="res://new_stuff/enemy_new.gd" id="1_l6tw7"]
+[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_nwixf"]
+[ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://new_stuff/Health.gd" id="2_f3r1a"]
+[ext_resource type="Script" uid="uid://bkfhtt6bkq1wo" path="res://enemy_collision.gd" id="3_nfjya"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
+radius = 0.252031
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ohc2"]
+radius = 1.07133
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggbst"]
+bg_color = Color(0.841707, 0.210368, 0.261383, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
+bg_color = Color(0.457217, 0.780075, 0.313953, 1)
+
+[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("health") groups=["enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_l6tw7")
+health = NodePath("health")
+
+[node name="nest temp" parent="." instance=ExtResource("1_nwixf")]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="nest temp/Armature" index="0"]
+bones/0/position = Vector3(0.00574136, 0.0427213, 0.0154232)
+bones/0/rotation = Quaternion(0.00638231, -0.0367924, 0.131438, 0.990621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_nhupr")
+
+[node name="collision area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05602, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_nfjya")
+metadata/_custom_type_script = "uid://bkfhtt6bkq1wo"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision area"]
+shape = SubResource("SphereShape3D_1ohc2")
+
+[node name="Enemy" type="Node3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+path_height_offset = 0.1
+
+[node name="state machine" type="Node" parent="."]
+
+[node name="health" type="Node" parent="." node_paths=PackedStringArray("health_bar", "collision_area")]
+script = ExtResource("2_f3r1a")
+max_health = 100.0
+health_bar = NodePath("MarginContainer/ProgressBar")
+collision_area = NodePath("../collision area")
+metadata/_custom_type_script = "uid://c5yqyjc48mnyr"
+
+[node name="MarginContainer" type="MarginContainer" parent="health"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_bottom = 62.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="health/MarginContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ggbst")
+theme_override_styles/fill = SubResource("StyleBoxFlat_toq4n")
+
+[editable path="nest temp"]

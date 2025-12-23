@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjtabrbxneck5"]
 
 [ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_wa0eo"]
-[ext_resource type="Script" uid="uid://cosdpw1kvc3cv" path="res://characters/enemy/enemy_class_old.gd" id="2_fxr07"]
+[ext_resource type="Script" uid="uid://chb0ejmanf2vg" path="res://new_stuff/enemy_class_new.gd" id="2_nhupr"]
 [ext_resource type="Script" uid="uid://dnaab58kq5kav" path="res://characters/state_machine.gd" id="3_ggbst"]
 [ext_resource type="Script" uid="uid://c2lfssa12byma" path="res://characters/enemy/follow_new.gd" id="5_toq4n"]
 [ext_resource type="Script" uid="uid://ds2j56q21ecgs" path="res://characters/enemy/attack_new.gd" id="5_u8tuc"]
@@ -18,7 +18,7 @@ bg_color = Color(0.841707, 0.210368, 0.261383, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
 bg_color = Color(0.457217, 0.780075, 0.313953, 1)
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="enemy" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 3
 
@@ -43,10 +43,10 @@ shape = SubResource("SphereShape3D_1ohc2")
 
 [node name="Enemy" type="Node3D" parent="." node_paths=PackedStringArray("progress_bar", "collision_area")]
 unique_name_in_owner = true
-script = ExtResource("2_fxr07")
+script = ExtResource("2_nhupr")
 progress_bar = NodePath("../MarginContainer/ProgressBar")
 collision_area = NodePath("../collision area")
-metadata/_custom_type_script = "uid://cosdpw1kvc3cv"
+metadata/_custom_type_script = "uid://chb0ejmanf2vg"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 1

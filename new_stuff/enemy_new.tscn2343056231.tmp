@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjtabrbxneck5"]
+[gd_scene load_steps=9 format=3 uid="uid://cmtodrinswk6d"]
 
-[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_wa0eo"]
-[ext_resource type="Script" uid="uid://cosdpw1kvc3cv" path="res://characters/enemy/enemy_class_old.gd" id="2_fxr07"]
-[ext_resource type="Script" uid="uid://dnaab58kq5kav" path="res://characters/state_machine.gd" id="3_ggbst"]
-[ext_resource type="Script" uid="uid://c2lfssa12byma" path="res://characters/enemy/follow_new.gd" id="5_toq4n"]
-[ext_resource type="Script" uid="uid://ds2j56q21ecgs" path="res://characters/enemy/attack_new.gd" id="5_u8tuc"]
+[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_nwixf"]
+[ext_resource type="Script" uid="uid://dnaab58kq5kav" path="res://characters/state_machine.gd" id="3_ka8i5"]
+[ext_resource type="Script" uid="uid://c2lfssa12byma" path="res://characters/enemy/follow_new.gd" id="4_4xq0r"]
+[ext_resource type="Script" uid="uid://ds2j56q21ecgs" path="res://characters/enemy/attack_new.gd" id="5_ufk3i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
 radius = 0.252031
@@ -18,11 +17,11 @@ bg_color = Color(0.841707, 0.210368, 0.261383, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
 bg_color = Color(0.457217, 0.780075, 0.313953, 1)
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="enemy" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 3
 
-[node name="nest temp" parent="." instance=ExtResource("1_wa0eo")]
+[node name="nest temp" parent="." instance=ExtResource("1_nwixf")]
 transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="nest temp/Armature" index="0"]
@@ -41,12 +40,7 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="collision area"]
 shape = SubResource("SphereShape3D_1ohc2")
 
-[node name="Enemy" type="Node3D" parent="." node_paths=PackedStringArray("progress_bar", "collision_area")]
-unique_name_in_owner = true
-script = ExtResource("2_fxr07")
-progress_bar = NodePath("../MarginContainer/ProgressBar")
-collision_area = NodePath("../collision area")
-metadata/_custom_type_script = "uid://cosdpw1kvc3cv"
+[node name="Enemy" type="Node3D" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 1
@@ -73,19 +67,19 @@ autostart = true
 
 [node name="state machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state")]
 unique_name_in_owner = true
-script = ExtResource("3_ggbst")
+script = ExtResource("3_ka8i5")
 starting_state = NodePath("follow")
 current_state = NodePath("follow")
 
 [node name="attack old" type="Node" parent="state machine"]
 
 [node name="follow" type="Node" parent="state machine" node_paths=PackedStringArray("attack_state") groups=["enemy"]]
-script = ExtResource("5_toq4n")
+script = ExtResource("4_4xq0r")
 attack_state = NodePath("../attack")
 metadata/_custom_type_script = "uid://nr67em11qde3"
 
 [node name="attack" type="Node" parent="state machine" node_paths=PackedStringArray("follow_state")]
-script = ExtResource("5_u8tuc")
+script = ExtResource("5_ufk3i")
 follow_state = NodePath("../follow")
 metadata/_custom_type_script = "uid://nr67em11qde3"
 

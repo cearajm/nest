@@ -3,7 +3,7 @@ extends Node
 
 @export var starting_state : StateNew
 @export var current_state : StateNew
-@export var cooldown_timer: Timer
+@export var collision_area : Area3D
 
 
 # initialize by giving each child a reference to parent, enter default starting state

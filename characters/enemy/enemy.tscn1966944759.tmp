@@ -18,7 +18,7 @@ bg_color = Color(0.841707, 0.210368, 0.261383, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
 bg_color = Color(0.457217, 0.780075, 0.313953, 1)
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 

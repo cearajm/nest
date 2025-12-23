@@ -1,11 +1,11 @@
 extends Node3D
 
-class_name	Enemy
+class_name Enemy_old
 
 @export var health = 100 : set = _set_health
-@export var progress_bar = ProgressBar
-@export var collision_area = Area3D
-@export var damage_amount = 5
+@export var progress_bar: = ProgressBar
+@export var collision_area: = Area3D
+@export var damage_amount: = 5
 var vulnerable = false
 
 @onready var state_machine = %"state machine"
