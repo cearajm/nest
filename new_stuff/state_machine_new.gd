@@ -7,7 +7,7 @@ extends Node
 
 
 # initialize by giving each child a reference to parent, enter default starting state
-func init(parent: Player):
+func init(parent: CharacterBody3D):
 	print("asldkfja")
 	for child in get_children():
 		if child.get_class() == 'Node':

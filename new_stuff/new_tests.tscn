@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgr0efkrullhg"]
+[gd_scene load_steps=11 format=3 uid="uid://bgr0efkrullhg"]
 
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player_new.tscn" id="1_8vnc5"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_y6nrq"]
@@ -19,6 +19,8 @@ sky = SubResource("Sky_x773i")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_tipku"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fowen"]
 albedo_texture = ExtResource("1_y6nrq")
 uv1_scale = Vector3(17.965, 17.965, 17.965)
@@ -35,32 +37,6 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3673649, 0)
-use_collision = true
-size = Vector3(200, 1, 200)
-material = SubResource("StandardMaterial3D_fowen")
-
-[node name="CSGBox3D" type="CSGCylinder3D" parent="environment/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, 64.06019)
-radius = 2.288
-height = 15.197
-
-[node name="CSGBox3D2" type="CSGCylinder3D" parent="environment/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, -63.945007)
-radius = 2.288
-height = 15.197
-
-[node name="CSGBox3D3" type="CSGCylinder3D" parent="environment/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, -64.927475, 17.25551, 0)
-radius = 2.288
-height = 15.197
-
-[node name="CSGBox3D4" type="CSGCylinder3D" parent="environment/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 64.41022, 17.25551, 0)
-radius = 2.288
-height = 15.197
-
 [node name="pause menu" parent="." instance=ExtResource("3_fowen")]
 
 [node name="player" parent="." instance=ExtResource("1_8vnc5")]
@@ -72,3 +48,32 @@ script = ExtResource("4_o7u5i")
 
 [node name="enemy" parent="." instance=ExtResource("5_tipku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07262421, 0.047455847, 3.7598658)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_tipku")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3673649, 0)
+use_collision = true
+size = Vector3(200, 1, 200)
+material = SubResource("StandardMaterial3D_fowen")
+
+[node name="CSGBox3D" type="CSGCylinder3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, 64.06019)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D2" type="CSGCylinder3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 0, 17.25551, -63.945007)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D3" type="CSGCylinder3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, -64.927475, 17.25551, 0)
+radius = 2.288
+height = 15.197
+
+[node name="CSGBox3D4" type="CSGCylinder3D" parent="NavigationRegion3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 64.41022, 17.25551, 0)
+radius = 2.288
+height = 15.197

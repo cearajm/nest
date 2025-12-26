@@ -30,7 +30,7 @@ func process_physics(delta: float) -> StateNew:
 		#
 	#else:
 	var y_velocity := parent.velocity.y
-	#parent.velocity.y = 0.0
+	parent.velocity.y = 0.0
 
 	# handle dash movement -> track duration of dash and its cooldown
 	if Input.is_action_just_pressed("shift") and can_dash:
@@ -69,6 +69,9 @@ func process_physics(delta: float) -> StateNew:
 	if is_starting_jump:
 		parent.velocity.y += jump_impulse
 		
+	## give player location to enemies
+	#get_tree().call_group("enemy", "update_target_location", parent.global_transform.origin)  # get location once, update all enemy groups
+	
 	parent.move_and_slide()
 	
 	return null

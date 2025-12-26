@@ -1,12 +1,17 @@
 extends CharacterBody3D
 class_name EnemyNew
 
+@onready var health = $health
+@onready var state_machine = $state_machine
+@onready var in_range: bool = false
+@export var skin: Node3D
 
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready() -> void:
 	print('hi i am evil')
+	state_machine.init(self) 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+	

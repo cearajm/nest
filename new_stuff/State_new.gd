@@ -17,7 +17,7 @@ class_name StateNew
 
 var _gravity := -30.0
 
-var parent: Player
+var parent: CharacterBody3D
 
 func enter(delta : float) -> void:
 	pass
