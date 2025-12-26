@@ -72,10 +72,7 @@ func process_physics(delta: float) -> StateNew:
 	var is_starting_jump := Input.is_action_just_pressed("jump") and parent.is_on_floor()
 	if is_starting_jump:
 		parent.velocity.y += jump_impulse
-		
-	## give player location to enemies
-	#if move_direction.length() > 0.2:
-	#get_tree().call_group("enemy", "update_target_location", parent.global_transform.origin)  # get location once, update all enemy groups
+	
 	
 	parent.move_and_slide()
 	

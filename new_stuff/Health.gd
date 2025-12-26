@@ -21,7 +21,9 @@ func take_damage(damage_amount):
 	print(health_value)
 	
 	if health_value < 0:
-		die()
+		var root = self.get_tree().get_root()
+		if root is EnemyNew:
+			die()
 	
 	
 func die():
