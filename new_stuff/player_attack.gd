@@ -15,6 +15,8 @@ func _input(event: InputEvent) -> void:
 		if enemy_attacked:
 			print('exists')
 			enemy_attacked.health.take_damage(damage_amount)
+		#get_tree().call_group("enemy", "update_target_location", parent.global_transform.origin)  # get location once, update all enemy groups
+
 
 
 

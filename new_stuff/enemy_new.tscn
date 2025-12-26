@@ -19,7 +19,7 @@ bg_color = Color(0.841707, 0.210368, 0.261383, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
 bg_color = Color(0.457217, 0.780075, 0.313953, 1)
 
-[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("skin") groups=["enemy"]]
+[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("skin")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_5xwab")
@@ -48,7 +48,8 @@ shape = SubResource("SphereShape3D_1ohc2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
-path_height_offset = 0.1
+debug_enabled = true
+debug_path_custom_color = Color(0.5803922, 0.9254902, 0.37254903, 1)
 
 [node name="health" type="Node" parent="." node_paths=PackedStringArray("health_bar", "collision_area")]
 script = ExtResource("2_f3r1a")
@@ -77,9 +78,10 @@ starting_state = NodePath("follow")
 current_state = NodePath("follow")
 collision_area = NodePath("../collision area")
 
-[node name="follow" type="Node" parent="state_machine" node_paths=PackedStringArray("follow_state")]
+[node name="follow" type="Node" parent="state_machine" node_paths=PackedStringArray("follow_state") groups=["enemy"]]
 script = ExtResource("6_5xwab")
 follow_state = NodePath(".")
+move_speed = 4.0
 metadata/_custom_type_script = "uid://ca5kxniobmclc"
 
 [editable path="nest temp"]

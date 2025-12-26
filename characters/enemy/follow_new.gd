@@ -14,7 +14,7 @@ var gravity = -30
 func process_physics(delta) -> State:
 	
 	var current_location = enemy.global_transform.origin  # get global position
-	var next_location = nav_agent.get_next_path_position()  # next location calculated by nav agent 3d
+	var next_location = nav_agent.get_next_path_position() * delta # next location calculated by nav agent 3d
 	var new_velocity = (next_location - current_location).normalized() * speed  # direction vector at speed
 	
 	# rotate enemy to face player
@@ -31,9 +31,9 @@ func process_physics(delta) -> State:
 	return null
 	
 
-# set target location (player), called in player script
-func update_target_location(target_location) -> void:
-	nav_agent.set_target_position(target_location)
+## set target location (player), called in player script
+#func update_target_location(target_location) -> void:
+	#nav_agent.set_target_position(target_location)
 	
 func stop():
 	pass  # stop a certain distance from player

@@ -13,6 +13,10 @@ var cooldown_timer: float
 # inherit:
 # var parent : Parent
 
+#func process(delta: float) -> void:
+	### give player location to enemies
+	#get_tree().call_group("enemy", "update_target_location", parent.global_transform.origin)  # get location once, update all enemy groups
+
 func process_physics(delta: float) -> StateNew:
 	# get movement input, and get forward and right coords of character
 	var raw_input := Input.get_vector("left", "right", "forward", "back")
@@ -70,6 +74,7 @@ func process_physics(delta: float) -> StateNew:
 		parent.velocity.y += jump_impulse
 		
 	## give player location to enemies
+	#if move_direction.length() > 0.2:
 	#get_tree().call_group("enemy", "update_target_location", parent.global_transform.origin)  # get location once, update all enemy groups
 	
 	parent.move_and_slide()

@@ -27,6 +27,9 @@ func exit() -> void:
 	
 # func get_enemy():
 	# return enemy
+	
+
+	
 func process_input(event: InputEvent) -> StateNew:
 	return null
 

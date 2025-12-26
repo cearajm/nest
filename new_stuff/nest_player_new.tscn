@@ -30,6 +30,10 @@ health = NodePath("health")
 [node name="nest_new" parent="." instance=ExtResource("3_gu13x")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 
+[node name="Skeleton3D" parent="nest_new/nest temp/Armature" index="0"]
+bones/0/position = Vector3(0.005741358, 0.042721346, 0.015423241)
+bones/0/rotation = Quaternion(0.0063823075, -0.03679242, 0.13143833, 0.99062085)
+
 [node name="camera" type="CollisionShape3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

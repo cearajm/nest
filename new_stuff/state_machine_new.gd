@@ -21,6 +21,9 @@ func change_state(new_state : StateNew):
 	current_state = new_state
 	current_state.enter(get_process_delta_time())
 	
+#func _process(delta: float) -> void:
+	#current_state.process(delta)
+	
 func _physics_process(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 	if new_state:
