@@ -11,6 +11,8 @@ class_name SliceBalloon
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+@onready var talk_sound: AudioStreamPlayer = $talk_sound
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -72,7 +74,8 @@ func _ready() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
-	get_viewport().set_input_as_handled()
+	#get_viewport().set_input_as_handled()
+	pass
 
 
 func _notification(what: int) -> void:
@@ -180,3 +183,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	if not letter in [' ', '.']:
+		talk_sound.pitch_scale = randf_range(0.5, 0.7)
+		talk_sound.play()
