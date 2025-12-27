@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="nest"
-run/main_scene="uid://bgr0efkrullhg"
+run/main_scene="uid://bwxqsmmmlotp7"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -39,7 +39,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://characters/balloon.tscn"
+runtime/balloon_path="res://new_stuff/dialogue/balloon.tscn"
 
 [display]
 
@@ -129,7 +129,7 @@ f={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://characters/vagabond.dialogue")
+locale/translations_pot_files=PackedStringArray("res://characters/vagabond.dialogue", "res://new_stuff/dialogue/slice.dialogue")
 
 [layer_names]
 

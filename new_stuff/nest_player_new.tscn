@@ -68,6 +68,7 @@ collision_area = NodePath("../Area3D")
 metadata/_custom_type_script = "uid://c5yqyjc48mnyr"
 
 [node name="health_bar" type="MarginContainer" parent="health"]
+visible = false
 offset_right = 198.0
 offset_bottom = 62.0
 
