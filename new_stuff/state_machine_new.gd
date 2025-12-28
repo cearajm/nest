@@ -1,24 +1,37 @@
 extends Node
 
 
-@export var starting_state : State
-@export var current_state : State
-# @onready var enemy = %Enemy
+@export var starting_state : StateNew
+@export var current_state : StateNew
+@export var collision_area : Area3D
+
 
 # initialize by giving each child a reference to parent, enter default starting state
-func init():
+func init(parent: CharacterBody3D):
 	print("asldkfja")
+	for child in get_children():
+		if child.get_class() == 'Node':
+			child.parent = parent
 	change_state(starting_state)
 	
-func change_state(new_state : State):
+func change_state(new_state : StateNew):
 	if current_state:
 		current_state.exit()
 		
 	current_state = new_state
 	current_state.enter(get_process_delta_time())
 	
+#func _process(delta: float) -> void:
+	#current_state.process(delta)
+	
 func _physics_process(delta: float) -> void:
 	var new_state = current_state.process_physics(delta)
 	if new_state:
 		change_state(new_state)
-		
+
+
+# TODO:
+# add states:
+# freeze
+# run
+# cast

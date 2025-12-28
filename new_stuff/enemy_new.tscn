@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5tgvex2v8h3o"]
+
+[ext_resource type="Script" uid="uid://d2gjtefdxhw3c" path="res://new_stuff/EnemyNew.gd" id="1_5xwab"]
+[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_nwixf"]
+[ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://new_stuff/Health.gd" id="2_f3r1a"]
+[ext_resource type="Script" uid="uid://bkfhtt6bkq1wo" path="res://enemy_collision.gd" id="3_nfjya"]
+[ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://new_stuff/state_machine_new.gd" id="5_5xwab"]
+[ext_resource type="Script" uid="uid://ckgpgr7ivwmm6" path="res://new_stuff/follow_player.gd" id="6_5xwab"]
+[ext_resource type="Script" uid="uid://b6gh34eg8raja" path="res://new_stuff/enemy_attack.gd" id="7_l8frw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
+radius = 0.252031
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ohc2"]
+radius = 1.07133
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggbst"]
+bg_color = Color(0.841707, 0.210368, 0.261383, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
+bg_color = Color(0.457217, 0.780075, 0.313953, 1)
+
+[node name="enemy" type="CharacterBody3D" node_paths=PackedStringArray("skin")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_5xwab")
+skin = NodePath("nest temp")
+
+[node name="nest temp" parent="." instance=ExtResource("1_nwixf")]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="nest temp/Armature" index="0"]
+bones/0/position = Vector3(0.005741358, 0.042721346, 0.015423241)
+bones/0/rotation = Quaternion(0.0063823075, -0.03679242, 0.13143833, 0.99062085)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_nhupr")
+
+[node name="hitbox_range" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05602, 0)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_nfjya")
+metadata/_custom_type_script = "uid://bkfhtt6bkq1wo"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitbox_range"]
+shape = SubResource("SphereShape3D_1ohc2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+debug_enabled = true
+debug_path_custom_color = Color(0.5803922, 0.9254902, 0.37254903, 1)
+
+[node name="health" type="Node" parent="." node_paths=PackedStringArray("health_bar", "collision_area")]
+script = ExtResource("2_f3r1a")
+max_health = 100.0
+health_bar = NodePath("MarginContainer/ProgressBar")
+collision_area = NodePath("../hitbox_range")
+metadata/_custom_type_script = "uid://c5yqyjc48mnyr"
+
+[node name="MarginContainer" type="MarginContainer" parent="health"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_bottom = 62.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="health/MarginContainer"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ggbst")
+theme_override_styles/fill = SubResource("StyleBoxFlat_toq4n")
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state", "collision_area")]
+script = ExtResource("5_5xwab")
+starting_state = NodePath("follow")
+current_state = NodePath("follow")
+collision_area = NodePath("../hitbox_range")
+
+[node name="follow" type="Node" parent="state_machine" node_paths=PackedStringArray("follow_state") groups=["enemy"]]
+script = ExtResource("6_5xwab")
+follow_state = NodePath(".")
+move_speed = 4.0
+metadata/_custom_type_script = "uid://ca5kxniobmclc"
+
+[node name="attack" type="Node" parent="state_machine"]
+script = ExtResource("7_l8frw")
+metadata/_custom_type_script = "uid://ca5kxniobmclc"
+
+[connection signal="body_entered" from="hitbox_range" to="state_machine/attack" method="_on_hitbox_range_body_entered"]
+[connection signal="body_exited" from="hitbox_range" to="state_machine/attack" method="_on_hitbox_range_body_exited"]
+
+[editable path="nest temp"]

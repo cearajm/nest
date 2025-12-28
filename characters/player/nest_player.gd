@@ -129,9 +129,9 @@ func _physics_process(delta: float) -> void:
 	if move_direction.length() > 0.2:
 		_last_movement_direction = move_direction
 	# calculate angle to turn to
-	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
+	var _target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 
-	_skin.rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
+	_skin.rotation.y = lerp_angle(_skin.rotation.y, _target_angle, rotation_speed * delta)
 	
 	
 func _input(event: InputEvent) -> void:

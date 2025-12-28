@@ -9,6 +9,5 @@ script = ExtResource("1_rog56")
 current_scene_packed = ExtResource("1_am0sd")
 
 [node name="inventory_test" parent="." instance=ExtResource("1_am0sd")]
-visible = false
 
 [node name="pause_menu" parent="." instance=ExtResource("3_clx23")]

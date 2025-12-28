@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://73fsf2o7fl2w"]
+[gd_scene load_steps=11 format=3 uid="uid://dmgfhcoc2gh2h"]
 
-[ext_resource type="Script" uid="uid://day0hegqjmfad" path="res://characters/player/nest_player.gd" id="1_670rb"]
-[ext_resource type="Resource" uid="uid://djonv2rgvy10s" path="res://inventory/player_inventory.tres" id="2_iru6a"]
-[ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="2_xrfa8"]
-[ext_resource type="Script" uid="uid://dv1adnd1cttfc" path="res://characters/player/player_health.gd" id="3_m3dcp"]
-[ext_resource type="AudioStream" uid="uid://xpgxkeb3xa26" path="res://audio/Footstep_Dirt_03.wav" id="5_55hb8"]
-[ext_resource type="Script" uid="uid://dsmy2j4brlr3k" path="res://characters/player/place_dot.gd" id="6_grw1h"]
+[ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://new stuff/nest_player_new.gd" id="1_jopcf"]
+[ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="3_gu13x"]
+[ext_resource type="Script" uid="uid://36csyth0cw44" path="res://new stuff/camera.gd" id="3_j5uo0"]
+[ext_resource type="Script" uid="uid://dv1adnd1cttfc" path="res://characters/player/player_health.gd" id="4_gal6n"]
+[ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://new stuff/state_machine_new.gd" id="4_jopcf"]
+[ext_resource type="Script" uid="uid://chlcxp5usw55g" path="res://new stuff/player_walk.gd" id="5_j5uo0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_syiot"]
 radius = 0.258299
@@ -18,34 +18,35 @@ bg_color = Color(0.458824, 0.780392, 0.313726, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iru6a"]
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Node3D" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_670rb")
-inventory = ExtResource("2_iru6a")
+script = ExtResource("1_jopcf")
 
-[node name="nest" parent="." instance=ExtResource("2_xrfa8")]
+[node name="nest" parent="." instance=ExtResource("3_gu13x")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="camera" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_syiot")
+script = ExtResource("3_j5uo0")
 
-[node name="cameraPivot" type="Node3D" parent="CollisionShape3D"]
+[node name="cameraPivot" type="Node3D" parent="camera"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12305, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CollisionShape3D/cameraPivot"]
+[node name="SpringArm3D" type="SpringArm3D" parent="camera/cameraPivot"]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, -0.789, -1)
 spring_length = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="CollisionShape3D/cameraPivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="camera/cameraPivot/SpringArm3D"]
 unique_name_in_owner = true
 current = true
 
 [node name="health" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "collision_area")]
-script = ExtResource("3_m3dcp")
+script = ExtResource("4_gal6n")
 progress_bar = NodePath("../MarginContainer/ProgressBar")
 collision_area = NodePath("../Area3D")
 
@@ -71,13 +72,14 @@ wait_time = 0.1
 
 [node name="can_dash_timer" type="Timer" parent="."]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("5_55hb8")
-volume_db = -20.18
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("4_jopcf")
+starting_state = NodePath("walk")
 
-[node name="place_point" type="Node" parent="."]
-script = ExtResource("6_grw1h")
+[node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("walk_state")]
+script = ExtResource("5_j5uo0")
+walk_state = NodePath(".")
+metadata/_custom_type_script = "uid://ca5kxniobmclc"
 
 [connection signal="body_entered" from="Area3D" to="health" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="health" method="_on_area_3d_body_exited"]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmgfhcoc2gh2h"]
+
+[ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://new_stuff/nest_player_new.gd" id="1_jopcf"]
+[ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="3_gu13x"]
+[ext_resource type="Script" uid="uid://36csyth0cw44" path="res://new_stuff/camera.gd" id="3_j5uo0"]
+[ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://new_stuff/state_machine_new.gd" id="4_jopcf"]
+[ext_resource type="Script" uid="uid://chlcxp5usw55g" path="res://new_stuff/player_walk.gd" id="5_j5uo0"]
+[ext_resource type="Script" uid="uid://b8m34txjdckgd" path="res://new_stuff/player_attack.gd" id="7_c8dmg"]
+[ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://new_stuff/Health.gd" id="7_qft85"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_syiot"]
+radius = 0.258299
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iru6a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3dcp"]
+bg_color = Color(0.843137, 0.211765, 0.262745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iru6a"]
+bg_color = Color(0.458824, 0.780392, 0.313726, 1)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("skin", "animations", "health") groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_jopcf")
+skin = NodePath("nest_new")
+animations = NodePath("nest_new/nest temp/AnimationPlayer")
+health = NodePath("health")
+
+[node name="nest_new" parent="." instance=ExtResource("3_gu13x")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="nest_new/nest temp/Armature" index="0"]
+bones/0/position = Vector3(0.005741358, 0.042721346, 0.015423241)
+bones/0/rotation = Quaternion(0.0063823075, -0.03679242, 0.13143833, 0.99062085)
+
+[node name="camera" type="CollisionShape3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_syiot")
+script = ExtResource("3_j5uo0")
+
+[node name="cameraPivot" type="Node3D" parent="camera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12305, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="camera/cameraPivot"]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, -0.789, -1)
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="camera/cameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+current = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3.11, 0, 0, 0, 3.11, 0, 0, 0, 3.11, 0, 1, 0)
+shape = SubResource("SphereShape3D_iru6a")
+
+[node name="health" type="Node" parent="." node_paths=PackedStringArray("health_bar", "collision_area")]
+script = ExtResource("7_qft85")
+max_health = 30.0
+health_bar = NodePath("health_bar/health_value")
+collision_area = NodePath("../Area3D")
+metadata/_custom_type_script = "uid://c5yqyjc48mnyr"
+
+[node name="health_bar" type="MarginContainer" parent="health"]
+visible = false
+offset_right = 198.0
+offset_bottom = 62.0
+
+[node name="health_value" type="ProgressBar" parent="health/health_bar"]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_m3dcp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iru6a")
+
+[node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state", "collision_area")]
+script = ExtResource("4_jopcf")
+starting_state = NodePath("walk")
+current_state = NodePath("walk")
+collision_area = NodePath("../Area3D")
+
+[node name="walk" type="Node" parent="state_machine" node_paths=PackedStringArray("walk_state")]
+script = ExtResource("5_j5uo0")
+walk_state = NodePath(".")
+metadata/_custom_type_script = "uid://ca5kxniobmclc"
+
+[node name="attack" type="Node" parent="state_machine"]
+script = ExtResource("7_c8dmg")
+metadata/_custom_type_script = "uid://ca5kxniobmclc"
+
+[connection signal="body_entered" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_exited"]
+
+[editable path="nest_new"]
+[editable path="nest_new/nest temp"]

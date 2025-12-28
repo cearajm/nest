@@ -18,7 +18,7 @@ bg_color = Color(0.841707, 0.210368, 0.261383, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toq4n"]
 bg_color = Color(0.457217, 0.780075, 0.313953, 1)
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 
@@ -64,6 +64,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_toq4n")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true
+path_height_offset = 0.1
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
