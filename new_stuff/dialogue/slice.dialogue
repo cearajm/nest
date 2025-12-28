@@ -1,5 +1,5 @@
 ~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+#Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
 #Nathan: Here are some choices.
 #- First one
 #	Nathan: You picked the first one.
@@ -7,6 +7,11 @@ Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
 #	Nathan: You picked the second one.
 #- Start again => start
 #- End the conversation => END
-Nathan: For more information see the online documentation.
-Yon: line 2
+#Nathan: For more information see the online documentation.
+Yon: hi guys
+Yon: i opened up my game project again
+Yon: it's really hard though.
+Yon: this text took me like 6 hours to implement ...
+Yon: geez
+Yon: hope u guys have a happy new year ^_^
 => END

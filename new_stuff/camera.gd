@@ -14,7 +14,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	# detect if the mouse is captured in the game window and is moving.
 	# control the camera view accordingly
 	var is_camera_controlled := (

@@ -19,7 +19,8 @@ func asdf():
 	print('test')
 
 
-		
+# viewport dimensions
+# 1152 x 648
 
 #region refs -- audio, animation
 
