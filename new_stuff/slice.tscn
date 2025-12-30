@@ -11,7 +11,7 @@ offsets = PackedFloat32Array(0.33814433, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ql1uh"]
 gradient = SubResource("Gradient_3cdnu")
-fill_from = Vector2(0.06837607, 0)
+fill_from = Vector2(0.094017096, 0)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gnaqn"]
 panorama = ExtResource("3_3cdnu")
@@ -40,29 +40,27 @@ glow_levels/3 = 0.3
 glow_levels/4 = 1.0
 glow_levels/6 = 0.6
 glow_normalized = true
-glow_intensity = 2.27
-glow_strength = 0.4
-glow_bloom = 0.14
+glow_intensity = 0.2
+glow_strength = 0.88
+glow_bloom = 0.29
 glow_blend_mode = 0
 fog_enabled = true
 fog_light_color = Color(1, 1, 1, 1)
-fog_light_energy = 0.53
-fog_sun_scatter = 0.49
+fog_light_energy = 0.0
+fog_sun_scatter = 0.3
 fog_density = 0.0544
-fog_sky_affect = 0.122
+fog_sky_affect = 0.181
 fog_height_density = 0.005
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1352
 volumetric_fog_albedo = Color(0.88420427, 0.9110009, 0.9883333, 1)
 volumetric_fog_emission = Color(1.3091564e-05, 0.59185255, 0.9952745, 1)
-volumetric_fog_emission_energy = 0.7
+volumetric_fog_emission_energy = 0.6
 volumetric_fog_gi_inject = 0.8
 volumetric_fog_anisotropy = 0.1
 volumetric_fog_ambient_inject = 1.15
 volumetric_fog_sky_affect = 0.35
 adjustment_enabled = true
-adjustment_brightness = 0.88
-adjustment_contrast = 1.1
 adjustment_saturation = 0.8
 adjustment_color_correction = SubResource("GradientTexture2D_ql1uh")
 
@@ -102,13 +100,16 @@ shadow_enabled = true
 shadow_caster_mask = 4294967294
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.56410414, -0.816734, 0.12137573, 0.8187523, 0.57231283, 0.045856155, -0.10691718, 0.073509, 0.99154687, 0, 457.621, 875.20276)
-light_color = Color(0.8828741, 0.84817266, 0.9284005, 1)
-light_energy = 1.351
+transform = Transform3D(0.56410414, -0.816734, 0.12137573, 0.8187523, 0.57231283, 0.045856167, -0.10691718, 0.073509, 0.99154687, -385.77676, 1370.5219, 1745.1349)
+layers = 7
+light_color = Color(0.9657242, 0.9523563, 0.9999998, 1)
+light_energy = 1.235
 light_indirect_energy = 1.058
 light_volumetric_fog_energy = 0.765
-light_specular = 0.533
+light_specular = 0.0
 shadow_enabled = true
+shadow_opacity = 0.37
+shadow_blur = 1.657
 directional_shadow_max_distance = 5.5
 sky_mode = 1
 
