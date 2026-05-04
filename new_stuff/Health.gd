@@ -16,6 +16,7 @@ func _ready() -> void:
 
 	
 func take_damage(damage_amount):
+	# update health bar
 	health_value -= damage_amount
 	health_bar.value = health_value
 	print(health_value)

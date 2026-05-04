@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfy0c2m54at3n"]
 
-[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/player/nest_player.tscn" id="4_0vvhk"]
+[ext_resource type="PackedScene" uid="uid://73fsf2o7fl2w" path="res://characters/player/nest_player_old.tscn" id="4_0vvhk"]
 [ext_resource type="PackedScene" uid="uid://clt7sdfngg1u5" path="res://assets/temple.tscn" id="5_0lgua"]
 [ext_resource type="PackedScene" uid="uid://dm8v8jx3bhn7q" path="res://terrain/terrain_test.tscn" id="6_oqy01"]
 

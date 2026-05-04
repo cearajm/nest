@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bgr0efkrullhg"]
 
-[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player_new.tscn" id="1_8vnc5"]
+[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player.tscn" id="1_8vnc5"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_y6nrq"]
 [ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="3_fowen"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://new_stuff/chest.gd" id="4_o7u5i"]

@@ -6,6 +6,7 @@ extends Node
 @export var collision_area : Area3D
 
 
+
 # initialize by giving each child a reference to parent, enter default starting state
 func init(parent: CharacterBody3D):
 	print("asldkfja")

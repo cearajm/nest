@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5tgvex2v8h3o"]
+[gd_scene load_steps=13 format=3 uid="uid://c5tgvex2v8h3o"]
 
 [ext_resource type="Script" uid="uid://d2gjtefdxhw3c" path="res://new_stuff/EnemyNew.gd" id="1_5xwab"]
 [ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://characters/player/nest temp.glb" id="1_nwixf"]
 [ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://new_stuff/Health.gd" id="2_f3r1a"]
 [ext_resource type="Script" uid="uid://bkfhtt6bkq1wo" path="res://enemy_collision.gd" id="3_nfjya"]
 [ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://new_stuff/state_machine_new.gd" id="5_5xwab"]
-[ext_resource type="Script" uid="uid://ckgpgr7ivwmm6" path="res://new_stuff/follow_player.gd" id="6_5xwab"]
-[ext_resource type="Script" uid="uid://b6gh34eg8raja" path="res://new_stuff/enemy_attack.gd" id="7_l8frw"]
+[ext_resource type="Script" uid="uid://ckgpgr7ivwmm6" path="res://new_stuff/follow_state.gd" id="6_5xwab"]
+[ext_resource type="Script" uid="uid://b6gh34eg8raja" path="res://new_stuff/enemy_attack_state.gd" id="7_l8frw"]
+[ext_resource type="Script" uid="uid://cfjtafydbei8n" path="res://new_stuff/idle_state.gd" id="8_jqg1m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
 radius = 0.252031
@@ -75,7 +76,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_toq4n")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state", "collision_area")]
 script = ExtResource("5_5xwab")
-starting_state = NodePath("follow")
+starting_state = NodePath("idle")
 current_state = NodePath("follow")
 collision_area = NodePath("../hitbox_range")
 
@@ -88,6 +89,10 @@ metadata/_custom_type_script = "uid://ca5kxniobmclc"
 [node name="attack" type="Node" parent="state_machine"]
 script = ExtResource("7_l8frw")
 metadata/_custom_type_script = "uid://ca5kxniobmclc"
+
+[node name="idle" type="Node" parent="state_machine" node_paths=PackedStringArray("health")]
+script = ExtResource("8_jqg1m")
+health = NodePath("../../health")
 
 [connection signal="body_entered" from="hitbox_range" to="state_machine/attack" method="_on_hitbox_range_body_entered"]
 [connection signal="body_exited" from="hitbox_range" to="state_machine/attack" method="_on_hitbox_range_body_exited"]

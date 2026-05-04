@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bwxqsmmmlotp7"]
 
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_g12ab"]
-[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player_new.tscn" id="2_00ly5"]
+[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://new_stuff/nest_player.tscn" id="2_00ly5"]
 [ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://ui/pause_menu.tscn" id="2_gnaqn"]
 [ext_resource type="Texture2D" uid="uid://dok28jdti4cd8" path="res://shaders/Cgtuts_OceanHDRIs_Freebie/006/006.hdr" id="3_3cdnu"]
 [ext_resource type="Script" uid="uid://45j1k1vx4kig" path="res://new_stuff/text_display.gd" id="4_gnaqn"]

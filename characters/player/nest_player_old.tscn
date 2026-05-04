@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://73fsf2o7fl2w"]
 
-[ext_resource type="Script" uid="uid://day0hegqjmfad" path="res://characters/player/nest_player.gd" id="1_670rb"]
+[ext_resource type="Script" uid="uid://day0hegqjmfad" path="res://characters/player/nest_player_old.gd" id="1_670rb"]
 [ext_resource type="Resource" uid="uid://djonv2rgvy10s" path="res://inventory/player_inventory.tres" id="2_iru6a"]
 [ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="2_xrfa8"]
 [ext_resource type="Script" uid="uid://dv1adnd1cttfc" path="res://characters/player/player_health.gd" id="3_m3dcp"]

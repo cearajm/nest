@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dmgfhcoc2gh2h"]
 
-[ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://new_stuff/nest_player_new.gd" id="1_jopcf"]
+[ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://new_stuff/nest_player.gd" id="1_jopcf"]
 [ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://characters/player/nest_temp.tscn" id="3_gu13x"]
 [ext_resource type="Script" uid="uid://36csyth0cw44" path="res://new_stuff/camera.gd" id="3_j5uo0"]
 [ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://new_stuff/state_machine_new.gd" id="4_jopcf"]
@@ -68,7 +68,6 @@ collision_area = NodePath("../Area3D")
 metadata/_custom_type_script = "uid://c5yqyjc48mnyr"
 
 [node name="health_bar" type="MarginContainer" parent="health"]
-visible = false
 offset_right = 198.0
 offset_bottom = 62.0
 
