@@ -9,6 +9,8 @@ var is_dashing = false
 var can_dash = true
 var dash_timer: float
 var cooldown_timer: float
+var can_move = true
+var y_velocity: float
 
 
 #func process(delta: float) -> void:
@@ -26,13 +28,13 @@ func process_physics(delta: float) -> StateNew:
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
 	
-	#if can_move == false:  # stop movement during npc interaction
-		#move_direction = Vector3.ZERO
-		#velocity = Vector3.ZERO
-		#
-	#else:
-	var y_velocity := parent.velocity.y
-	parent.velocity.y = 0.0
+	if can_move == false:  # stop movement during npc interaction
+		move_direction = Vector3.ZERO
+		parent.velocity = Vector3.ZERO
+		
+	else:
+		y_velocity = parent.velocity.y
+		parent.velocity.y = 0.0
 
 	# handle dash movement -> track duration of dash and its cooldown
 	if Input.is_action_just_pressed("shift") and can_dash:

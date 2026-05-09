@@ -4,7 +4,7 @@ extends Node
 
 var point = preload("res://Entities/player/actions/point.tscn")
 var line = preload("res://Entities/player/actions/line.tscn")
-var point_area = preload("res://Entities/player/actions/point_area.gd")
+var point_area = preload("res://Entities/player/actions/point_area.tscn")
 var point_count : int = 6
 var point_one : Vector3
 var point_two : Vector3

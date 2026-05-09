@@ -24,7 +24,7 @@ glow_enabled = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_3nhiu"]
 radius = 2.06814
 
-[node name="Node3D" type="Node3D"]
+[node name="InventoryTest" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5exwl")

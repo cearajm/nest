@@ -1,6 +1,6 @@
 extends Node3D
 
-var dialogue = load("res://characters/vagabond.dialogue")
+var dialogue = load("res://Entities/vagabond/vagabond.dialogue")
 var dialogue_line = await DialogueManager.get_next_dialogue_line(dialogue, "start")
 
 var can_interact = false
@@ -10,15 +10,16 @@ func _ready():
 	DialogueManager.dialogue_ended.connect(toggle_move)
 	DialogueManager.dialogue_started.connect(toggle_move)
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("f") and can_interact:
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("f") and can_interact:
+		print(can_interact)
 		DialogueManager.show_dialogue_balloon(dialogue, "start")
 		
 
 func toggle_move(_resource: DialogueResource):
 	if !player:
 		player = get_tree().get_first_node_in_group("player")
-	player.toggle_move()
+	#player.toggle_move()
 	if can_interact:
 		can_interact = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -27,7 +28,9 @@ func toggle_move(_resource: DialogueResource):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
+	print("in range")
 	can_interact = true
 		
 func _on_area_3d_body_exited(_body: Node3D) -> void:
+	print("out of range")
 	can_interact = false

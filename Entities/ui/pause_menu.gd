@@ -1,43 +1,38 @@
-extends Control
+extends CanvasLayer
 
 @onready var main = $"."
-@onready var pause_menu = $PanelContainer
-@onready var scene_select_menu = $"Scene Select"
+@onready var pause_menu = $PauseMenu
+@onready var scene_select_menu = $SceneSelect
 
 signal restart
 
 func _ready():
-	main.hide()
+	# show the main layer and hide the rest
 	scene_select_menu.hide()
-	pause_menu.hide()
-	get_tree().paused = false
-	
-	# hide pause menu when changing scenes
+
+	## hide pause menu when changing scenes
 	scene_select_menu.inventory_scene.connect(resume)
 	scene_select_menu.temple_scene.connect(resume)
 	scene_select_menu.combat_scene.connect(resume)
 	scene_select_menu.water_scene.connect(resume)
+	
+
+func _input(event) -> void:
+	if Input.is_action_just_pressed("esc"):
+		resume()
+
 
 func resume():
-	get_tree().paused = false
+	# toggle menu layer visibility
 	main.hide()
-	pause_menu.hide()
+	pause_menu.show()
 	scene_select_menu.hide()
+	
+	get_viewport().set_input_as_handled()
+	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-func pause():
-	get_tree().paused = true
-	main.show()
-	pause_menu.show()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("esc"):
-		if get_tree().paused == false:
-			pause()
-		else:
-			resume()
-			
+
 func _on_resume_pressed() -> void:
 	resume()
 

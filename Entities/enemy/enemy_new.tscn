@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://c5tgvex2v8h3o"]
 
-[ext_resource type="Script" uid="uid://d2gjtefdxhw3c" path="res://Entities/enemy/EnemyNew.gd" id="1_5xwab"]
+[ext_resource type="Script" uid="uid://d2gjtefdxhw3c" path="res://Entities/enemy/Enemy.gd" id="1_5xwab"]
 [ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://Entities/player/nest temp.glb" id="1_nwixf"]
 [ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://Common/Health.gd" id="2_f3r1a"]
 [ext_resource type="Script" uid="uid://bkfhtt6bkq1wo" path="res://old_stuff/enemy_collision.gd" id="3_nfjya"]
 [ext_resource type="Script" uid="uid://ck71j7fnbxybx" path="res://Common/StateMachine/StateMachine.gd" id="5_5xwab"]
-[ext_resource type="Script" uid="uid://ckgpgr7ivwmm6" path="res://Entities/enemy/follow_state.gd" id="6_5xwab"]
-[ext_resource type="Script" uid="uid://b6gh34eg8raja" path="res://Entities/enemy/enemy_attack_state.gd" id="7_l8frw"]
-[ext_resource type="Script" uid="uid://cfjtafydbei8n" path="res://Entities/enemy/idle_state.gd" id="8_jqg1m"]
+[ext_resource type="Script" uid="uid://ckgpgr7ivwmm6" path="res://Entities/enemy/states/follow_state.gd" id="6_5xwab"]
+[ext_resource type="Script" uid="uid://b6gh34eg8raja" path="res://Entities/enemy/states/enemy_attack_state.gd" id="7_l8frw"]
+[ext_resource type="Script" uid="uid://cfjtafydbei8n" path="res://Entities/enemy/states/idle_state.gd" id="8_jqg1m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
 radius = 0.252031

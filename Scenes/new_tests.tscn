@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgr0efkrullhg"]
+[gd_scene load_steps=10 format=3 uid="uid://bgr0efkrullhg"]
 
-[ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://Entities/ui/pause_menu.tscn" id="1_ldtmk"]
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
@@ -38,8 +37,6 @@ environment = SubResource("Environment_q8ysp")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
-
-[node name="PauseMenu" parent="." instance=ExtResource("1_ldtmk")]
 
 [node name="Player" parent="." instance=ExtResource("2_y8epo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11.695396)

@@ -4,14 +4,14 @@ extends StateNew
 
 
 var speed = 3.0
-var rotation_speed = 12.0
+rotation_speed = 12.0
 var gravity = -30
 @onready var enemy = $"../.."
 @onready var nav_agent = %NavigationAgent3D
 # print(nav_agent)
 @onready var player = get_tree().get_first_node_in_group("player")
 
-func process_physics(delta) -> State:
+func process_physics(delta):
 	
 	var current_location = enemy.global_transform.origin  # get global position
 	var next_location = nav_agent.get_next_path_position() * delta # next location calculated by nav agent 3d

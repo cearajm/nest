@@ -3,10 +3,16 @@
 [ext_resource type="Script" uid="uid://22hvbfk51nmc" path="res://Entities/ui/pause_menu.gd" id="1_50142"]
 [ext_resource type="PackedScene" uid="uid://cuhdbb7cxn701" path="res://Entities/ui/scene_select_ui.tscn" id="2_ejwgg"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer"]
+process_mode = 2
 layer = 10
+script = ExtResource("1_50142")
 
-[node name="pause menu" type="Control" parent="."]
+[node name="SceneSelect" parent="." instance=ExtResource("2_ejwgg")]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 top_level = true
 layout_mode = 3
@@ -16,9 +22,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_50142")
 
-[node name="PanelContainer" type="PanelContainer" parent="pause menu"]
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
+unique_name_in_owner = true
 top_level = true
 layout_mode = 1
 anchors_preset = 8
@@ -33,41 +39,37 @@ offset_bottom = 186.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause menu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="resume" type="Button" parent="pause menu/PanelContainer/VBoxContainer"]
+[node name="resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "resume"
 
-[node name="change scene" type="Button" parent="pause menu/PanelContainer/VBoxContainer"]
+[node name="change scene" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "change scene"
 
-[node name="restart" type="Button" parent="pause menu/PanelContainer/VBoxContainer"]
+[node name="restart" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "restart"
 
-[node name="quit" type="Button" parent="pause menu/PanelContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "quit"
 
-[node name="Scene Select" parent="pause menu" instance=ExtResource("2_ejwgg")]
-layout_mode = 1
-mouse_filter = 2
-
-[connection signal="pressed" from="pause menu/PanelContainer/VBoxContainer/resume" to="pause menu" method="_on_resume_pressed"]
-[connection signal="pressed" from="pause menu/PanelContainer/VBoxContainer/change scene" to="pause menu" method="_on_change_scene_pressed"]
-[connection signal="pressed" from="pause menu/PanelContainer/VBoxContainer/restart" to="pause menu" method="_on_restart_pressed"]
-[connection signal="pressed" from="pause menu/PanelContainer/VBoxContainer/quit" to="pause menu" method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/change scene" to="." method="_on_change_scene_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

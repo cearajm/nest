@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name EnemyNew
+class_name Enemy
 
 @onready var health = $health
 @onready var state_machine = $state_machine

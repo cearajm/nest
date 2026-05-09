@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjtabrbxneck5"]
 
 [ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://Entities/player/nest temp.glb" id="1_wa0eo"]
-[ext_resource type="Script" uid="uid://cosdpw1kvc3cv" path="res://Entities/enemy/enemy_class_old.gd" id="2_fxr07"]
+[ext_resource type="Script" uid="uid://cosdpw1kvc3cv" path="res://old_stuff/enemy_class_old.gd" id="2_fxr07"]
 [ext_resource type="Script" uid="uid://dnaab58kq5kav" path="res://old_stuff/state_machine.gd" id="3_ggbst"]
-[ext_resource type="Script" uid="uid://c2lfssa12byma" path="res://Entities/enemy/follow_new.gd" id="5_toq4n"]
+[ext_resource type="Script" uid="uid://c2lfssa12byma" path="res://old_stuff/follow_new.gd" id="5_toq4n"]
 [ext_resource type="Script" uid="uid://ds2j56q21ecgs" path="res://old_stuff/attack_new.gd" id="5_u8tuc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nhupr"]
