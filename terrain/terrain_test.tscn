@@ -2,7 +2,7 @@
 
 [ext_resource type="Terrain3DMaterial" uid="uid://b1664ghbjqucc" path="res://terrain/material.tres" id="1_38ai4"]
 [ext_resource type="Terrain3DAssets" uid="uid://bofbru8kg76y2" path="res://terrain/assets.tres" id="2_jggbp"]
-[ext_resource type="PackedScene" uid="uid://clt7sdfngg1u5" path="res://assets/temple.tscn" id="3_jggbp"]
+[ext_resource type="PackedScene" uid="uid://clt7sdfngg1u5" path="res://Assets/temple.tscn" id="3_jggbp"]
 
 [node name="Node3D" type="Terrain3D"]
 data_directory = "res://terrain"

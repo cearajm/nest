@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://vtw87sompue2"
+path="res://.godot/imported/vagabond.dialogue-c553a560eaa746f2f7b81ad7b4075310.tres"
+
+[deps]
+
+source_file="res://Entities/vagabond/vagabond.dialogue"
+dest_files=["res://.godot/imported/vagabond.dialogue-c553a560eaa746f2f7b81ad7b4075310.tres"]
+
+[params]
+
+defaults=true

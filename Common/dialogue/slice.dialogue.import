@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://5td6f6gnr1ek"
+path="res://.godot/imported/slice.dialogue-7ca5254bb3f6e8c0b0424f6a8663d6c4.tres"
+
+[deps]
+
+source_file="res://Common/dialogue/slice.dialogue"
+dest_files=["res://.godot/imported/slice.dialogue-7ca5254bb3f6e8c0b0424f6a8663d6c4.tres"]
+
+[params]
+
+defaults=true

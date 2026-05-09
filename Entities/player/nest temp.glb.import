@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cbi4sknbxk5u3"
-path="res://.godot/imported/temple.glb-7f4f773e4b7e9cab1ac37ca32e0d7348.scn"
+uid="uid://drx2rcsrmw4sk"
+path="res://.godot/imported/nest temp.glb-ea2b6c0ceaa32728d38ae268e38686f4.scn"
 
 [deps]
 
-source_file="res://Assets/temple.glb"
-dest_files=["res://.godot/imported/temple.glb-7f4f773e4b7e9cab1ac37ca32e0d7348.scn"]
+source_file="res://Entities/player/nest temp.glb"
+dest_files=["res://.godot/imported/nest temp.glb-ea2b6c0ceaa32728d38ae268e38686f4.scn"]
 
 [params]
 
@@ -37,21 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Cube": {
-"generate/physics": true,
-"physics/mask": 6
-},
-"PATH:Cube_001": {
-"generate/physics": true,
-"physics/mask": 6
-},
-"PATH:Cylinder_009": {
-"generate/physics": true,
-"physics/mask": 6
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

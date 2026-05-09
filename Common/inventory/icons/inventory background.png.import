@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7wfbk5t7q186"
-path.s3tc="res://.godot/imported/temple_Stylized_Terracotta_Tiles_001_basecolor.png-b3f2189c614ec2a21e5be7c2655cbfbb.s3tc.ctex"
+uid="uid://bb8ecsrodq6bh"
+path="res://.godot/imported/inventory background.png-9e1532ffe32d45614ad05f96e1e93dc4.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "3d00037c6aa9671a1ad74eaa15e98727"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/temple_Stylized_Terracotta_Tiles_001_basecolor.png"
-dest_files=["res://.godot/imported/temple_Stylized_Terracotta_Tiles_001_basecolor.png-b3f2189c614ec2a21e5be7c2655cbfbb.s3tc.ctex"]
+source_file="res://Common/inventory/icons/inventory background.png"
+dest_files=["res://.godot/imported/inventory background.png-9e1532ffe32d45614ad05f96e1e93dc4.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

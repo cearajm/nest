@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwxqsmmmlotp7"]
+
+[ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="1_g12ab"]
+[ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_00ly5"]
+[ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://Entities/ui/pause_menu.tscn" id="2_gnaqn"]
+[ext_resource type="Texture2D" uid="uid://dok28jdti4cd8" path="res://shaders/Cgtuts_OceanHDRIs_Freebie/006/006.hdr" id="3_3cdnu"]
+[ext_resource type="Script" uid="uid://45j1k1vx4kig" path="res://text_display.gd" id="4_gnaqn"]
+
+[sub_resource type="Gradient" id="Gradient_3cdnu"]
+offsets = PackedFloat32Array(0.33814433, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ql1uh"]
+gradient = SubResource("Gradient_3cdnu")
+fill_from = Vector2(0.094017096, 0)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gnaqn"]
+panorama = ExtResource("3_3cdnu")
+
+[sub_resource type="Sky" id="Sky_3cdnu"]
+sky_material = SubResource("PanoramaSkyMaterial_gnaqn")
+
+[sub_resource type="Environment" id="Environment_ql1uh"]
+background_mode = 2
+background_energy_multiplier = 1.48
+sky = SubResource("Sky_3cdnu")
+ambient_light_source = 3
+ambient_light_color = Color(0.23989934, 0.32698765, 0.72042024, 1)
+ambient_light_sky_contribution = 0.85
+ambient_light_energy = 1.88
+reflected_light_source = 2
+tonemap_exposure = 0.76
+ssao_enabled = true
+ssao_horizon = 0.5
+ssao_light_affect = 0.6
+ssao_ao_channel_affect = 1.0
+glow_enabled = true
+glow_levels/1 = 0.5
+glow_levels/2 = 0.5
+glow_levels/3 = 0.3
+glow_levels/4 = 1.0
+glow_levels/6 = 0.6
+glow_normalized = true
+glow_intensity = 0.2
+glow_strength = 0.88
+glow_bloom = 0.29
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.3
+fog_density = 0.0544
+fog_sky_affect = 0.181
+fog_height_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1352
+volumetric_fog_albedo = Color(0.88420427, 0.9110009, 0.9883333, 1)
+volumetric_fog_emission = Color(1.3091564e-05, 0.59185255, 0.9952745, 1)
+volumetric_fog_emission_energy = 0.6
+volumetric_fog_gi_inject = 0.8
+volumetric_fog_anisotropy = 0.1
+volumetric_fog_ambient_inject = 1.15
+volumetric_fog_sky_affect = 0.35
+adjustment_enabled = true
+adjustment_saturation = 0.8
+adjustment_color_correction = SubResource("GradientTexture2D_ql1uh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vsbi"]
+albedo_texture = ExtResource("1_g12ab")
+uv1_scale = Vector3(8, 8, 8)
+
+[node name="Slice" type="Node3D"]
+
+[node name="pause menu" parent="." instance=ExtResource("2_gnaqn")]
+
+[node name="text_display" type="CanvasLayer" parent="."]
+layer = 3
+script = ExtResource("4_gnaqn")
+metadata/_custom_type_script = "uid://bgotu8hxn3q2t"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.630516, 0)
+visible = false
+layers = 7
+light_color = Color(0.4765547, 0.61918694, 0.97385615, 1)
+light_energy = 3.514
+light_volumetric_fog_energy = 4.848
+light_size = 0.068
+omni_range = 29.853
+omni_attenuation = 2.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 555.5142, 0)
+visible = false
+layers = 7
+light_color = Color(0.6899819, 0.7625172, 0.8509934, 1)
+light_energy = 0.603
+light_volumetric_fog_energy = 4.679
+light_bake_mode = 1
+shadow_enabled = true
+shadow_caster_mask = 4294967294
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.56410414, -0.816734, 0.12137573, 0.8187523, 0.57231283, 0.045856167, -0.10691718, 0.073509, 0.99154687, -385.77676, 1370.5219, 1745.1349)
+layers = 7
+light_color = Color(0.9657242, 0.9523563, 0.9999998, 1)
+light_energy = 1.235
+light_indirect_energy = 1.058
+light_volumetric_fog_energy = 0.765
+light_specular = 0.0
+shadow_enabled = true
+shadow_opacity = 0.37
+shadow_blur = 1.657
+directional_shadow_max_distance = 5.5
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ql1uh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6526871, -0.9010134, -4.207245)
+use_collision = true
+collision_mask = 2
+size = Vector3(200, 1, 200)
+material = SubResource("StandardMaterial3D_6vsbi")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6526871, 11.933987, -4.207245)
+use_collision = true
+collision_mask = 2
+radius = 4.0
+height = 30.0
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6526871, 28.529335, -4.207245)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 4, 10)
+
+[node name="Player" parent="." instance=ExtResource("2_00ly5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.529647, 30.674772, -5.4956446)
