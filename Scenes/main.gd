@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var current_scene_packed : PackedScene
-var current_scene_id : String = "inventory_scene"
+var current_scene_id : String = "main_scene"
 var new_scene_id : String
 @onready var current_scene_node = self.get_child(0)
 @onready var pause_menu = $pause_menu
@@ -14,10 +14,10 @@ func _ready():
 	pause_menu.hide()
 	
 	scene_select.inventory_scene.connect(set_scene_inventory)
-	#scene_select.temple_scene.connect(set_scene_temple)
-	#scene_select.combat_scene.connect(set_scene_combat)
-	#scene_select.water_scene.connect(set_scene_water)
-	#pause_menu.restart.connect(restart)
+	scene_select.temple_scene.connect(set_scene_temple)
+	scene_select.combat_scene.connect(set_scene_combat)
+	scene_select.water_scene.connect(set_scene_water)
+	pause_menu.restart.connect(restart)
 	
 func _input(event: InputEvent) -> void:
 	# pause the game and show menu
@@ -46,7 +46,8 @@ func set_scene_temple():
 	switch_scene(new_scene_packed)
 	
 func set_scene_combat():
-	new_scene_packed = load("res://Scenes/combat_test.tscn")
+	#new_scene_packed = load("res://Scenes/combat_test.tscn")
+	new_scene_packed = load("res://Scenes/new_tests.tscn")
 	new_scene_id = "combat_scene"
 	switch_scene(new_scene_packed)
 	

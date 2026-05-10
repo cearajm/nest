@@ -6,6 +6,7 @@
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_rog56")
+current_scene_packed = ExtResource("3_jjvhh")
 
 [node name="new_tests" parent="." instance=ExtResource("3_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10791516, -2.2468243, 1.457622)
