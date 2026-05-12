@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgr0efkrullhg"]
+[gd_scene load_steps=12 format=3 uid="uid://bgr0efkrullhg"]
 
+[ext_resource type="Script" uid="uid://c7meeorqhqiw3" path="res://Scenes/new_tests.gd" id="1_y8epo"]
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
+[ext_resource type="PackedScene" uid="uid://vfxc0717yauo" path="res://Common/item_viewport.tscn" id="5_ldtmk"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="5_uyt3e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vy8y"]
@@ -26,7 +28,8 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 albedo_texture = ExtResource("5_uyt3e")
 uv1_scale = Vector3(17.965, 17.965, 17.965)
 
-[node name="Node3D" type="Node3D"]
+[node name="new_tests" type="Node3D"]
+script = ExtResource("1_y8epo")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -48,6 +51,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0.5, 3.76)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.314277, -0.051003933, 0)
 use_collision = true
 script = ExtResource("4_g8hf4")
+
+[node name="item_viewport" parent="." instance=ExtResource("5_ldtmk")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

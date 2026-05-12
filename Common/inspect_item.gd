@@ -9,7 +9,7 @@ var next_mouse_pos
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	item = get_child(0)  # index of first child
 	
 
@@ -17,9 +17,11 @@ func _input(event):
 	# mouse coordinates
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("click pos: ", event.position)
+			#print("click pos: ", event.position)
+			pass
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			print(item.basis)
+			#print(item.basis)
+			pass
 
 # use process instead of input because the mouse coordinates are updated every frame
 func _process(delta: float) -> void:

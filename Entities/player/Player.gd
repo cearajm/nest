@@ -10,9 +10,13 @@ class_name Player
 @export var health: Health
 @onready var state_machine = $state_machine
 
+
 func _ready() -> void:
 	state_machine.init(self)
- 
+	
+func toggle_movement():
+	# toggles physics process
+	state_machine.paused = !state_machine.paused
 
 func asdf():
 	print('test')

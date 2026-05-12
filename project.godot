@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 [application]
 
 config/name="nest"
-run/main_scene="uid://vfxc0717yauo"
+run/main_scene="uid://dafl2515eg0uf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

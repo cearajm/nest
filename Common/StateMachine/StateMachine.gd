@@ -5,7 +5,7 @@ extends Node
 @export var current_state : StateNew
 @export var collision_area : Area3D
 
-
+var paused: bool = false
 
 # initialize by giving each child a reference to parent, enter default starting state
 func init(parent: CharacterBody3D):
@@ -25,9 +25,12 @@ func change_state(new_state : StateNew):
 	#current_state.process(delta)
 	
 func _physics_process(delta: float) -> void:
-	var new_state = current_state.process_physics(delta)
-	if new_state:
-		change_state(new_state)
+	if !paused:
+		var new_state = current_state.process_physics(delta)
+		if new_state:
+			change_state(new_state)
+		
+
 
 
 # TODO:

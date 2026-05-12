@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://vfxc0717yauo"]
+[gd_scene load_steps=6 format=3 uid="uid://vfxc0717yauo"]
 
-[ext_resource type="Script" uid="uid://babnmfeicr5eu" path="res://item_inspection.gd" id="1_oxe7r"]
+[ext_resource type="Script" uid="uid://6gp22yurn26a" path="res://Common/item_viewport.gd" id="1_4ave3"]
+[ext_resource type="Script" uid="uid://babnmfeicr5eu" path="res://Common/inspect_item.gd" id="2_lwryx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_krn5p"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -15,29 +16,32 @@ sky = SubResource("Sky_oxe7r")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="inspect" type="Node2D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_p5l5l")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 1.0
+[node name="item_viewport" type="Node2D"]
+script = ExtResource("1_4ave3")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 offset_right = 548.0
 offset_bottom = 522.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="item" type="Node" parent="SubViewportContainer/SubViewport"]
-script = ExtResource("1_oxe7r")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_p5l5l")
 
-[node name="Item" type="CSGBox3D" parent="SubViewportContainer/SubViewport/item"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="item_rotation" type="Node" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("2_lwryx")
+
+[node name="Item" type="CSGBox3D" parent="SubViewportContainer/SubViewport/item_rotation"]
 transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
