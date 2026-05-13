@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhh6ok1vch5n3"]
+
+[ext_resource type="Script" uid="uid://c56ow38s5q5xc" path="res://Items/Item.gd" id="1_4b4ug"]
+[ext_resource type="PackedScene" uid="uid://b4gibxrxnl8dr" path="res://Items/interaction_area.tscn" id="2_x4ac2"]
+
+[node name="Donut" type="Node3D"]
+script = ExtResource("1_4b4ug")
+metadata/_custom_type_script = "uid://c56ow38s5q5xc"
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -5.9604645e-08, -1, 0, 1, -5.9604645e-08, 0, 0, 0)
+outer_radius = 0.8
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_x4ac2")]

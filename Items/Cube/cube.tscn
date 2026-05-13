@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c215froropb2k"]
 
-[ext_resource type="Script" uid="uid://c0fadnxwxu30u" path="res://Items/Cube/Cube.gd" id="1_62dt4"]
 [ext_resource type="PackedScene" uid="uid://b4gibxrxnl8dr" path="res://Items/interaction_area.tscn" id="1_boaxj"]
+[ext_resource type="Script" uid="uid://c56ow38s5q5xc" path="res://Items/Item.gd" id="1_f1fg6"]
 
 [node name="Cube" type="Node3D"]
-script = ExtResource("1_62dt4")
+script = ExtResource("1_f1fg6")
+metadata/_custom_type_script = "uid://c56ow38s5q5xc"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
