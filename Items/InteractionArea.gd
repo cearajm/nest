@@ -1,8 +1,6 @@
-extends Node3D
+extends Area3D
+class_name InteractionArea
 
-
-var player_in_area = false	
-var player = null
 
 # signals for interaction possibilities
 # so inputs are only processed when colliding
@@ -22,12 +20,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("e"):
 		interacted.emit()
 	
-func _process(_delta):
-	# TEMP
-	if player_in_area and Input.is_action_just_pressed("e"):
-		print("in range")
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(_body: Node3D) -> void:
 	# enable interaction (start processing)
 	set_process_unhandled_input(true)
 	interaction_available.emit()
@@ -38,4 +32,3 @@ func _on_area_3d_body_exited(_body: Node3D) -> void:
 	# disable interaction (stop processing)
 	set_process_unhandled_input(false)
 	interaction_unavailable.emit()
-	print("exited")

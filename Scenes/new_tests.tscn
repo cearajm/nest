@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
-[ext_resource type="PackedScene" uid="uid://c215froropb2k" path="res://Items/cube.tscn" id="4_xpacb"]
+[ext_resource type="PackedScene" uid="uid://c215froropb2k" path="res://Items/Cube/cube.tscn" id="4_xpacb"]
 [ext_resource type="PackedScene" uid="uid://vfxc0717yauo" path="res://Common/item_viewport.tscn" id="5_ldtmk"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="5_uyt3e"]
 
