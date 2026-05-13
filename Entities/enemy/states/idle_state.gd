@@ -3,9 +3,11 @@ extends StateNew
 
 @onready var player: Player
 @onready var nav_agent = %NavigationAgent3D
+@onready var follow_state = %follow
 
 var can_attack: bool = false
 var cooldown_timer: float
+var aggro: bool = false
 
 @export var health : Health
 
@@ -15,13 +17,16 @@ func _ready() -> void:
 	print("state: idle")
 	print(health.health_value)
 
-func _process(delta: float) -> void:
-	# the enemy receives the player's position every frame, and adjusts its path to follow.
-	# set the player's current position as the nav target:
-	#if player: 
-		#nav_agent.set_target_position(player.global_transform.origin)
-		
-	pass
+#func process_physics(delta: float) -> StateNew:
+	## the enemy receives the player's position every frame, and adjusts its path to follow.
+	## set the player's current position as the nav target:
+	##if player: 
+		##nav_agent.set_target_position(player.global_transform.origin)
+	#if aggro:
+		#
+		#
+		#
+	#pass
 		
 		
 

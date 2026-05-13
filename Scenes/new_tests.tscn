@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgr0efkrullhg"]
+[gd_scene load_steps=13 format=3 uid="uid://bgr0efkrullhg"]
 
 [ext_resource type="Script" uid="uid://c7meeorqhqiw3" path="res://Scenes/new_tests.gd" id="1_y8epo"]
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
+[ext_resource type="PackedScene" uid="uid://c215froropb2k" path="res://Items/cube.tscn" id="4_xpacb"]
 [ext_resource type="PackedScene" uid="uid://vfxc0717yauo" path="res://Common/item_viewport.tscn" id="5_ldtmk"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="5_uyt3e"]
 
@@ -47,8 +48,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11.695396)
 [node name="Enemy" parent="." instance=ExtResource("3_xpacb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0.5, 3.76)
 
+[node name="Cube" parent="." instance=ExtResource("4_xpacb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2851391, -2.9970126)
+
 [node name="Chest" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.314277, -0.051003933, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.314277, 1.1155174, 0)
+visible = false
 use_collision = true
 script = ExtResource("4_g8hf4")
 

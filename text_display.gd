@@ -1,12 +1,12 @@
 extends SliceBalloon
 
 #var slice_resource = load('res://new_stuff/dialogue/slice.dialogue')
-var dialogue = load('res://new_stuff/dialogue/slice.dialogue')
+var dialogue = load('res://Common/dialogue/slice.dialogue')
 #var dialogue_line = await DialogueManager.get_next_dialogue_line(resource, 'start')
 # or
 #var dialogue_line = await resource.get_next_dialogue_line('start')
 #var balloon_scene: PackedScene = load("res://new_stuff/dialogue/balloon.tscn")   # balloon
-var balloon_scene = load("res://new_stuff/dialogue/transparent_balloon.tscn")   # transparent_balloon
+var balloon_scene = load("res://Common/dialogue/transparent_balloon.tscn")   # transparent_balloon
 
 var dialogue_active = false
 

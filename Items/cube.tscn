@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c215froropb2k"]
+
+[ext_resource type="Script" uid="uid://bxe5ncmq58pqv" path="res://Items/cube.gd" id="1_f1fg6"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8kt3"]
+radius = 2.078158
+
+[node name="Cube" type="Node3D"]
+script = ExtResource("1_f1fg6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D"]
+shape = SubResource("SphereShape3D_c8kt3")
+
+[connection signal="body_entered" from="CSGBox3D/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="CSGBox3D/Area3D" to="." method="_on_area_3d_body_exited"]

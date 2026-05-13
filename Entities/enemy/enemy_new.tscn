@@ -81,6 +81,7 @@ current_state = NodePath("follow")
 collision_area = NodePath("../hitbox_range")
 
 [node name="follow" type="Node" parent="state_machine" node_paths=PackedStringArray("follow_state") groups=["enemy"]]
+unique_name_in_owner = true
 script = ExtResource("6_5xwab")
 follow_state = NodePath(".")
 move_speed = 4.0

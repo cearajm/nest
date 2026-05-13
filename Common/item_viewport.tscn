@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vfxc0717yauo"]
+[gd_scene load_steps=7 format=3 uid="uid://vfxc0717yauo"]
 
 [ext_resource type="Script" uid="uid://6gp22yurn26a" path="res://Common/item_viewport.gd" id="1_4ave3"]
 [ext_resource type="Script" uid="uid://babnmfeicr5eu" path="res://Common/inspect_item.gd" id="2_lwryx"]
+[ext_resource type="PackedScene" uid="uid://c215froropb2k" path="res://Items/cube.tscn" id="3_lwryx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_krn5p"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -41,8 +42,7 @@ directional_shadow_max_distance = 1.0
 [node name="item_rotation" type="Node" parent="SubViewportContainer/SubViewport"]
 script = ExtResource("2_lwryx")
 
-[node name="Item" type="CSGBox3D" parent="SubViewportContainer/SubViewport/item_rotation"]
-transform = Transform3D(0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, 0.49999997, 0, 0, 0)
+[node name="Cube" parent="SubViewportContainer/SubViewport/item_rotation" instance=ExtResource("3_lwryx")]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, -3.0284793)

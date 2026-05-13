@@ -25,11 +25,12 @@ func _input(event):
 
 # use process instead of input because the mouse coordinates are updated every frame
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("left_click"):
-		rotating = true
-		prev_mouse_pos = get_viewport().get_mouse_position()
-	if Input.is_action_just_released("left_click"):
-		rotating = false
+	if item:
+		if Input.is_action_just_pressed("left_click"):
+			rotating = true
+			prev_mouse_pos = get_viewport().get_mouse_position()
+		if Input.is_action_just_released("left_click"):
+			rotating = false
 		
 	# get mouse movement and item.rotate around the corresponding axis
 	# the item's parent is the world scene, so the basis of rotation is the global basis
