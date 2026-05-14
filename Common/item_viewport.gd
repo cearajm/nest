@@ -8,10 +8,11 @@ func _ready() -> void:
 	
 	
 func add_item(object) -> void:
+	# add object instance to the subviewport
+	# position needs to be reset cus the duplicate object also copies world coords
 	item_container.add_child(object)
 	item_container.item = object
-	print("added", object.name)
 	object.position = Vector3.ZERO
-	print(object.position)
-	print(object.global_position)
+	
+	print("added ", object.name)
 	

@@ -25,7 +25,7 @@ func _on_area_3d_body_entered(_body: Node3D) -> void:
 	# enable interaction (start processing)
 	set_process_unhandled_input(true)
 	interaction_available.emit()
-	print("entered")
+	print("item: ", get_parent().name)
 	
 
 func _on_area_3d_body_exited(_body: Node3D) -> void:
