@@ -1,0 +1,142 @@
+[gd_scene load_steps=21 format=3 uid="uid://s1lylc6gw5nv"]
+
+[ext_resource type="Shader" uid="uid://3hsa6wepgkfh" path="res://Effects/fire/fire_shader.tres" id="1_ug3rb"]
+[ext_resource type="Texture2D" uid="uid://bq6j4okgasuhq" path="res://Effects/fire/fire.png" id="2_lnjc0"]
+[ext_resource type="Texture2D" uid="uid://s1g6x77xghcu" path="res://Effects/fire/smoke.png" id="3_0uvrs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdgfk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_r2t82"]
+sky_material = SubResource("ProceduralSkyMaterial_xdgfk")
+
+[sub_resource type="Environment" id="Environment_cr37j"]
+background_mode = 2
+sky = SubResource("Sky_r2t82")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 2.09
+glow_strength = 1.16
+glow_mix = 0.0
+glow_blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2t82"]
+render_priority = 0
+shader = ExtResource("1_ug3rb")
+shader_parameter/Vector2Parameter = Vector2(0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cr37j"]
+
+[sub_resource type="Gradient" id="Gradient_t5fgd"]
+offsets = PackedFloat32Array(0, 0.5626822)
+colors = PackedColorArray(1, 0.76296204, 0, 1, 1, 0.16874456, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0uvrs"]
+gradient = SubResource("Gradient_t5fgd")
+
+[sub_resource type="Curve" id="Curve_vfp35"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2493225, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t5fgd"]
+curve = SubResource("Curve_vfp35")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0uvrs"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -50.000015
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 0.99999774
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_t5fgd")
+color_ramp = SubResource("GradientTexture1D_0uvrs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iv7v"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_lnjc0")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4iv7v"]
+material = SubResource("StandardMaterial3D_4iv7v")
+
+[sub_resource type="Gradient" id="Gradient_80fob"]
+offsets = PackedFloat32Array(0.5377778, 0.81777775, 0.9866667)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.64705884, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vfp35"]
+gradient = SubResource("Gradient_80fob")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cofhw"]
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -50.000015
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.99999774
+linear_accel_max = 0.99999774
+color_ramp = SubResource("GradientTexture1D_vfp35")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6knt"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_0uvrs")
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_uh8hv"]
+material = SubResource("StandardMaterial3D_j6knt")
+
+[node name="BlueFire" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cr37j")
+
+[node name="fire 1" type="CPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_r2t82")
+amount = 1
+mesh = SubResource("QuadMesh_cr37j")
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0.16195022, 1.569, 1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+visible = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_0uvrs")
+draw_pass_1 = SubResource("QuadMesh_4iv7v")
+
+[node name="smoke" type="GPUParticles3D" parent="."]
+visible = false
+amount = 16
+lifetime = 2.0
+speed_scale = 0.66
+process_material = SubResource("ParticleProcessMaterial_cofhw")
+draw_pass_1 = SubResource("QuadMesh_uh8hv")

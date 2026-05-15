@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://c7meeorqhqiw3" path="res://Scenes/new_tests.gd" id="1_y8epo"]
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
-[ext_resource type="PackedScene" uid="uid://s1lylc6gw5nv" path="res://shaders/fire.tscn" id="4_6g2pm"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
 [ext_resource type="PackedScene" uid="uid://dhh6ok1vch5n3" path="res://Items/Donut/donut.tscn" id="4_uyt3e"]
 [ext_resource type="PackedScene" uid="uid://c215froropb2k" path="res://Items/Cube/cube.tscn" id="4_xpacb"]
 [ext_resource type="PackedScene" uid="uid://vfxc0717yauo" path="res://Common/item_viewport.tscn" id="5_ldtmk"]
 [ext_resource type="Texture2D" uid="uid://d3geyffxbngej" path="res://terrain/kenney_prototype-textures/PNG/Light/texture_07.png" id="5_uyt3e"]
 [ext_resource type="PackedScene" uid="uid://cn0dx7w8o125g" path="res://Items/Cylinder/cylinder.tscn" id="6_uyt3e"]
+[ext_resource type="PackedScene" uid="uid://dte6bnf1kqklb" path="res://Effects/fire/campfire.tscn" id="10_6g2pm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vy8y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,9 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11.695396)
 
 [node name="Enemy" parent="." instance=ExtResource("3_xpacb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0.5, 3.76)
-
-[node name="Fire" parent="." instance=ExtResource("4_6g2pm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.959846, -9)
 
 [node name="items" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -105,3 +102,6 @@ height = 15.197
 transform = Transform3D(1, 0, 0, 0, 2.274608, 0, 0, 0, 1, 64.41022, 15.888145, 0)
 radius = 2.288
 height = 15.197
+
+[node name="campfire" parent="." instance=ExtResource("10_6g2pm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2209251, 0.83770967, -7.396763)
