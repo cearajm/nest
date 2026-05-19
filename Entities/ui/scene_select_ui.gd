@@ -7,6 +7,7 @@ signal inventory_scene
 signal temple_scene
 signal combat_scene
 signal water_scene
+signal forest_scene
 
 func _on_inventory_pressed() -> void:
 	print("inventory scene")
@@ -26,3 +27,12 @@ func _on_combat_pressed() -> void:
 func _on_water_pressed() -> void:
 	print("water scene")
 	water_scene.emit()
+
+
+func _on_forest_pressed() -> void:
+	print("forest scene")
+	forest_scene.emit()
+	
+	
+	
+	

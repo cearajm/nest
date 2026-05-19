@@ -51,7 +51,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "water"
 
+[node name="forest" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "forest"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/inventory" to="." method="_on_inventory_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/temple" to="." method="_on_temple_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/combat" to="." method="_on_combat_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/forest" to="." method="_on_forest_pressed"]

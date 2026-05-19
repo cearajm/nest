@@ -8,6 +8,7 @@ var new_scene_id : String
 @onready var scene_select = $pause_menu.get_node("SceneSelect")
 var new_scene_packed : PackedScene
 
+@onready var forest_scene = "res://Scenes/forest.tscn"
 
 
 func _ready():
@@ -17,6 +18,7 @@ func _ready():
 	scene_select.temple_scene.connect(set_scene_temple)
 	scene_select.combat_scene.connect(set_scene_combat)
 	scene_select.water_scene.connect(set_scene_water)
+	scene_select.forest_scene.connect(set_scene_forest)
 	pause_menu.restart.connect(restart)
 	
 func _input(event: InputEvent) -> void:
@@ -53,6 +55,10 @@ func set_scene_combat():
 	
 func set_scene_water():
 	new_scene_packed = load("res://Scenes/water_test.tscn")
+	switch_scene(new_scene_packed)
+	
+func set_scene_forest():
+	new_scene_packed = load(forest_scene)
 	switch_scene(new_scene_packed)
 	
 	

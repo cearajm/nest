@@ -76,7 +76,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_toq4n")
 
 [node name="state_machine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "current_state", "collision_area")]
 script = ExtResource("5_5xwab")
-starting_state = NodePath("idle")
+starting_state = NodePath("follow")
 current_state = NodePath("follow")
 collision_area = NodePath("../hitbox_range")
 

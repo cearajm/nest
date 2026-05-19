@@ -15,6 +15,8 @@ func _ready():
 	scene_select_menu.temple_scene.connect(resume)
 	scene_select_menu.combat_scene.connect(resume)
 	scene_select_menu.water_scene.connect(resume)
+	scene_select_menu.forest_scene.connect(resume)
+	
 	
 
 func _input(event) -> void:

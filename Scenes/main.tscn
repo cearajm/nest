@@ -1,15 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dafl2515eg0uf"]
 
 [ext_resource type="Script" uid="uid://sx6w2oyd86ud" path="res://Scenes/main.gd" id="1_rog56"]
+[ext_resource type="PackedScene" uid="uid://b1p3irko3bvlb" path="res://Scenes/forest.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b6i5kfi2qod0m" path="res://Entities/ui/pause_menu.tscn" id="3_clx23"]
-[ext_resource type="PackedScene" uid="uid://bgr0efkrullhg" path="res://Scenes/new_tests.tscn" id="3_jjvhh"]
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_rog56")
-current_scene_packed = ExtResource("3_jjvhh")
 
-[node name="new_tests" parent="." instance=ExtResource("3_jjvhh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10791516, -2.2468243, 1.457622)
+[node name="forest" parent="." instance=ExtResource("2_8gbba")]
 
 [node name="pause_menu" parent="." instance=ExtResource("3_clx23")]
 unique_name_in_owner = true
