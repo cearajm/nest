@@ -1,26 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1p3irko3bvlb"]
+[gd_scene load_steps=9 format=3 uid="uid://b1p3irko3bvlb"]
 
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="1_t7h48"]
-[ext_resource type="Texture2D" uid="uid://dt0xumcvvy8e5" path="res://shaders/sky/stars.jpg" id="1_u53w3"]
+[ext_resource type="Environment" uid="uid://bq32fvu1ptn0n" path="res://shaders/sky/forest_night_environment.tres" id="1_u53w3"]
 [ext_resource type="Texture2D" uid="uid://dj3de4eosvxb0" path="res://terrain/textures/sparse_grass_1k/forest_ground.png" id="2_8hnfc"]
 [ext_resource type="Texture2D" uid="uid://br163rujb0eid" path="res://terrain/textures/sparse_grass_1k/forest_ground_n.png" id="3_5ip0q"]
 [ext_resource type="PackedScene" uid="uid://dte6bnf1kqklb" path="res://Effects/fire/campfire.tscn" id="3_qq45g"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wo0py"]
-panorama = ExtResource("1_u53w3")
-
-[sub_resource type="Sky" id="Sky_uq144"]
-sky_material = SubResource("PanoramaSkyMaterial_wo0py")
-
-[sub_resource type="Environment" id="Environment_mvm06"]
-background_mode = 2
-sky = SubResource("Sky_uq144")
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.16738266, 0.205337, 0.25882357, 1)
-fog_density = 0.04
-fog_sky_affect = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u53w3"]
 albedo_texture = ExtResource("2_8hnfc")
@@ -41,7 +25,7 @@ data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100,
 [node name="environment" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
-environment = SubResource("Environment_mvm06")
+environment = ExtResource("1_u53w3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8vvc1iupwoqj"]
+
+[ext_resource type="Script" uid="uid://dyturwqev07mq" path="res://Entities/npc/Npc.gd" id="1_c8irv"]
+[ext_resource type="PackedScene" uid="uid://drx2rcsrmw4sk" path="res://Entities/player/nest temp.glb" id="1_ilbrv"]
+[ext_resource type="PackedScene" uid="uid://b4gibxrxnl8dr" path="res://Items/interaction_area.tscn" id="2_c8irv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kij7q"]
+height = 2.1272278
+
+[node name="Npc" type="CharacterBody3D"]
+script = ExtResource("1_c8irv")
+
+[node name="nest temp" parent="." instance=ExtResource("1_ilbrv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.049881, 0)
+shape = SubResource("CapsuleShape3D_kij7q")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_c8irv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1383718, 0.83851117)

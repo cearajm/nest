@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgr0efkrullhg"]
+[gd_scene load_steps=17 format=3 uid="uid://bgr0efkrullhg"]
 
 [ext_resource type="Script" uid="uid://c7meeorqhqiw3" path="res://Scenes/new_tests.gd" id="1_y8epo"]
 [ext_resource type="PackedScene" uid="uid://dmgfhcoc2gh2h" path="res://Entities/player/nest_player.tscn" id="2_y8epo"]
+[ext_resource type="PackedScene" uid="uid://c8vvc1iupwoqj" path="res://Entities/npc/npc.tscn" id="3_bsm01"]
 [ext_resource type="PackedScene" uid="uid://c5tgvex2v8h3o" path="res://Entities/enemy/enemy_new.tscn" id="3_xpacb"]
 [ext_resource type="Script" uid="uid://clwveaw52upge" path="res://old_stuff/chest.gd" id="4_g8hf4"]
 [ext_resource type="PackedScene" uid="uid://dhh6ok1vch5n3" path="res://Items/Donut/donut.tscn" id="4_uyt3e"]
@@ -47,6 +48,10 @@ directional_shadow_max_distance = 1.0
 
 [node name="Player" parent="." instance=ExtResource("2_y8epo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11.695396)
+
+[node name="Npc" parent="." instance=ExtResource("3_bsm01")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, 0, 0.47684538, -9.370453)
 
 [node name="Enemy" parent="." instance=ExtResource("3_xpacb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073, 0.5, 3.76)

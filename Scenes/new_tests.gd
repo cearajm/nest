@@ -4,6 +4,7 @@ extends Node3D
 @onready var item_viewport: Node2D = $item_viewport
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var items: Node = %items
+@onready var npc: Npc = %Npc
 
 
 # TODO: pause input processing for the subviewport when not inspecting (like in the collision area processing)
@@ -15,6 +16,9 @@ func _ready() -> void:
 	for child in items.get_children():
 		child.interaction_area.interacted.connect(inspect_item.bind(child))
 		print("connected: ", child.name)
+		
+	# connect npc signals
+	# npc.interaction_area.interacted.connect(inspect_item.bind(npc))
 	
 	
 	

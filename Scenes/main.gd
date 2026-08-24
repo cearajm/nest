@@ -12,6 +12,7 @@ var new_scene_packed : PackedScene
 
 
 func _ready():
+	# connect all scenes -- main will only have one instantiated at a time
 	pause_menu.hide()
 	
 	scene_select.inventory_scene.connect(set_scene_inventory)
@@ -31,6 +32,8 @@ func _input(event: InputEvent) -> void:
 	
 	
 func restart():
+	# restarts the current scene, does not return to the initial scene
+	# just copy the scene and make it again lol
 	var scene_copy = current_scene_packed.instantiate()
 	remove_child(current_scene_node)
 	add_child(scene_copy)
