@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 ## handles character physics and camera spring arm
 
-@export var inventory: Inventory
+@export var inventory: InventoryOld
 
 # export class  member, editable in property editor
 @export_group("Camera")

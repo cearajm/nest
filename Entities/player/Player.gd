@@ -4,7 +4,7 @@ class_name Player
 
 ## handles character physics and camera spring arm
 
-@export var inventory: Inventory
+#@export var inventory: Inventory
 @export var skin: Node3D
 @export var animations: AnimationPlayer
 @export var health: Health

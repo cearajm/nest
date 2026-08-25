@@ -4,9 +4,7 @@ extends CollisionShape3D
 @onready var _camera_pivot : Node3D = %cameraPivot
 @export_group("Camera")
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
-
 var _camera_input_direction := Vector2.ZERO
-
 
 
 func _ready() -> void:

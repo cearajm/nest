@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Inventory
+class_name InventoryOld
 
 signal update
 

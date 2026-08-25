@@ -1,6 +1,6 @@
 extends Control
 
-@export var inventory: Inventory
+@export var inventory: InventoryOld
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 
