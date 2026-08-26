@@ -43,3 +43,5 @@ text = "16"
 label_settings = SubResource("LabelSettings_jouhd")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
