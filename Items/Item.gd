@@ -11,3 +11,13 @@ class_name Item
 func _ready() -> void:
 	if item_data:
 		interaction_area.item_data = item_data
+		print(item_data.display_name + ": ", item_data.description)
+	else:
+		print("missing ItemData resource")
+
+
+func _on_use(player: Player):
+	# TODO: add the effects of using each item, and update player attributes if needed
+	# how do i do that. i think extend Item and override this function ??
+	print(item_data.display_name + " used by " + player.name)
+	return true

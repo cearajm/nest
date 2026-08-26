@@ -11,27 +11,25 @@ var quantity: int
 
 func _ready() -> void:
 	pass
-	
+
 
 func set_item(new_item: Item):
 	# assign item to an item variable, and qty == 1 by default
 	item = new_item
 	quantity = 1
 	if item == null:
-		#icon.visible = false  # empty the slot
-		icon.visible = true  # for testing, show placeholder for item
+		icon.visible = false  # empty the slot
+		#icon.visible = true  # for testing, show placeholder for item
 	else:
 		icon.visible = true  # show item image
-		icon.texture = item.icon
+		icon.texture = item.item_data.icon
 	update_quantity_text()
-
 
 func update_quantity_text():
 	if quantity <= 1:
 		quantity_text.text = ""
 	else:
 		quantity_text.text = str(quantity)
-
 
 func add_item():
 	quantity += 1
@@ -42,12 +40,21 @@ func remove_item():
 	update_quantity_text()
 	if quantity == 0:
 		set_item(null)
+		inventory.info_text.text = ""
+		
 
+func _on_mouse_entered() -> void:
+	# show the item's description on hover
+	if item:
+		inventory.info_text.text = item.item_data.description
+		
+func _on_mouse_exited() -> void:
+	inventory.info_text.text = ""
 
 func _on_pressed() -> void:
+	# use item
 	if item == null:
 		return
-		
 	var remove_after_use = item._on_use(inventory.get_parent())
 	if remove_after_use:
 		remove_item()

@@ -19,7 +19,7 @@ func _ready() -> void:
 		add_item(item)
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		toggle_window(!window.visible)
 
@@ -54,7 +54,7 @@ func remove_item(item: Item):
 func get_slot_to_add(item: Item) -> InventorySlot:
 	# check if the item can be stacked, else get an empty slot
 	for slot in slots:
-		if slot.item == item and slot.quantity < item.max_stack_size:
+		if slot.item == item and slot.quantity < item.item_data.max_stack:
 			return slot
 	for slot in slots:
 		if slot.item == null: return slot
@@ -72,10 +72,11 @@ func get_item_quantity(item: Item) -> int:
 	var total = 0
 	for slot in slots:
 		if slot.item == item:
-			total += slot.quantity
+			total += slot.item_data.quantity
 	return total
 
 
+@warning_ignore("unused_parameter")
 func on_give_player_item(item: Item, amount: int):
 	pass
 	

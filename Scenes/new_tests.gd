@@ -22,8 +22,9 @@ func _ready() -> void:
 	# connect npc signals
 	# npc.interaction_area.interacted.connect(inspect_item.bind(npc))
 	
-func pick_up_item(object) -> void:
-	object.visible = false  # TODO: change to queue_free
+func pick_up_item(item) -> void:
+	item.visible = false  # TODO: change to queue_free
+	player.inventory.add_item(item)
 	
 	
 	

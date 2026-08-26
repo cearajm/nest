@@ -23,9 +23,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	# this only runs when unhandled input processing is enabled
 	if event.is_action_pressed("e"):
 		interacted.emit()
+		print("interacting")
 	if event.is_action_pressed("left_click"):
 		if item_data:
 			picked_up.emit()
+			print("picking up")
 		else:
 			print("missing ItemData resource")
 	

@@ -1,6 +1,6 @@
 extends Resource
 class_name ItemData
-# Create .tres files of this type                                to store static data for each item
+# Create .tres files of this type to store static data for each item
 
 # These attributes will be editable in the inspector for each item
 @export var display_name: String = "New Item"

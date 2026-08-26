@@ -59,7 +59,8 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 folder_colors={
 "res://Common/Scripts/": "orange",
-"res://Entities/player/": "green"
+"res://Entities/player/": "green",
+"res://Resources/": "teal"
 }
 
 [global_group]

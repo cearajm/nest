@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bgyg87nhldty6"]
+
+[ext_resource type="Texture2D" uid="uid://chg1flucfw4rt" path="res://Assets/images/puppey.png" id="1_a5r2g"]
+[ext_resource type="Script" uid="uid://cwja4gmmrp6to" path="res://Common/Scripts/resources/ItemData.gd" id="1_g25aa"]
+
+[resource]
+script = ExtResource("1_g25aa")
+display_name = "Cube"
+icon = ExtResource("1_a5r2g")
+max_stack = 16
+description = "A hotelier with a cute hat."
+metadata/_custom_type_script = "uid://cwja4gmmrp6to"
