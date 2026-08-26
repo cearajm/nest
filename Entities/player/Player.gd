@@ -9,6 +9,7 @@ class_name Player
 @export var animations: AnimationPlayer
 @export var health: Health
 @onready var state_machine = $state_machine
+@onready var inventory: Inventory = get_node("Inventory")
 
 
 func _ready() -> void:

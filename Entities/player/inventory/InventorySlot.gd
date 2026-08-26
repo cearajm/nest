@@ -18,7 +18,8 @@ func set_item(new_item: Item):
 	item = new_item
 	quantity = 1
 	if item == null:
-		icon.visible = true  # empty the slot
+		#icon.visible = false  # empty the slot
+		icon.visible = true  # for testing, show placeholder for item
 	else:
 		icon.visible = true  # show item image
 		icon.texture = item.icon

@@ -12,13 +12,18 @@ extends Node3D
 # TODO: to think about: action manager class for different interaction types idk. so can use in main scene
 
 func _ready() -> void:
-	# connect signals
+	# connect signals: detect interaction with scene items.
+	# two actions: INSPECT and ADD TO INVENTORY
 	for child in items.get_children():
 		child.interaction_area.interacted.connect(inspect_item.bind(child))
 		print("connected: ", child.name)
+		child.interaction_area.picked_up.connect(pick_up_item.bind(child))
 		
 	# connect npc signals
 	# npc.interaction_area.interacted.connect(inspect_item.bind(npc))
+	
+func pick_up_item(object) -> void:
+	object.visible = false  # TODO: change to queue_free
 	
 	
 	
