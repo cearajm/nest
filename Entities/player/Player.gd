@@ -10,6 +10,7 @@ class_name Player
 @export var health: Health
 @onready var state_machine = $state_machine
 @onready var inventory: Inventory = get_node("Inventory")
+@onready var action_manager: ActionManager = get_node("ActionManager")
 
 
 func _ready() -> void:

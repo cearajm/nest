@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dmgfhcoc2gh2h"]
+[gd_scene load_steps=33 format=4 uid="uid://dmgfhcoc2gh2h"]
 
 [ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://Entities/player/Player.gd" id="1_jopcf"]
 [ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://Entities/player/player_model.tscn" id="3_gu13x"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://c5yqyjc48mnyr" path="res://Common/Health.gd" id="7_qft85"]
 [ext_resource type="Script" uid="uid://c3tuq3qaqj25o" path="res://Entities/player/inventory/Inventory.gd" id="8_oe5hp"]
 [ext_resource type="PackedScene" uid="uid://b5qygfmc0vhx4" path="res://Entities/player/inventory/inventory_slot.tscn" id="9_svuff"]
+[ext_resource type="Script" uid="uid://ba6rfhf14n20c" path="res://Entities/player/actions/action_manager.gd" id="10_svuff"]
+[ext_resource type="Script" uid="uid://dhb3xh8yowesg" path="res://Entities/player/place_point.gd" id="11_hv2ka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5mgc"]
 
@@ -432,6 +434,12 @@ text = "description here"
 label_settings = SubResource("LabelSettings_hv2ka")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ActionManager" type="Node" parent="."]
+script = ExtResource("10_svuff")
+
+[node name="PlacePoint" type="Node" parent="ActionManager"]
+script = ExtResource("11_hv2ka")
 
 [connection signal="body_entered" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_exited"]
