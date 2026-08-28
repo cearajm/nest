@@ -2,7 +2,7 @@ extends Node
 
 @onready var player = $".."
 
-var point = preload("res://Entities/player/actions/point.tscn")
+var point = preload("res://Entities/player/actions/point_old.tscn")
 var line = preload("res://Entities/player/actions/line.tscn")
 var point_area = preload("res://Entities/player/actions/point_area.tscn")
 var point_count : int = 6

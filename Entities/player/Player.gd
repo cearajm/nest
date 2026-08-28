@@ -15,6 +15,9 @@ class_name Player
 
 func _ready() -> void:
 	state_machine.init(self)
+	action_manager.init(self)
+	#action_manager.player = self
+	#print(action_manager.player)
 	
 func toggle_movement():
 	# toggles physics process

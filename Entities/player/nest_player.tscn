@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c3tuq3qaqj25o" path="res://Entities/player/inventory/Inventory.gd" id="8_oe5hp"]
 [ext_resource type="PackedScene" uid="uid://b5qygfmc0vhx4" path="res://Entities/player/inventory/inventory_slot.tscn" id="9_svuff"]
 [ext_resource type="Script" uid="uid://ba6rfhf14n20c" path="res://Entities/player/actions/action_manager.gd" id="10_svuff"]
-[ext_resource type="Script" uid="uid://dhb3xh8yowesg" path="res://Entities/player/place_point.gd" id="11_hv2ka"]
+[ext_resource type="Script" uid="uid://dhb3xh8yowesg" path="res://Entities/player/actions/place_point/place_point.gd" id="11_hv2ka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5mgc"]
 
