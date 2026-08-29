@@ -2,6 +2,7 @@ extends PlayerAction
 
 
 var point_scene = preload("res://Entities/player/actions/place_point/point.tscn")
+var line_scene = preload("res://Entities/player/actions/line.tscn")
 @onready var player: Player
 #var description: String = "placed a point"
 var max_charges: int = 4
@@ -16,22 +17,23 @@ func place_point() -> void:
 		point.position = player.global_position
 		add_child(point)
 		
-		# if a previous point exists, connect it to the current one
-		connect_points(prev_position, point.position)
-		#else:
-			#print("is first")
-		
+		var current_position = point.position
+		if prev_position:
+			connect_points(prev_position, current_position)
 		prev_position = point.position
 		remaining_charges -= 1
 		
-	# clear once you run out of charges
 	else:
 		remove_all_points()
 		
-func connect_points(prev_position, current_position) -> void:
-	if prev_position:
-		print(prev_position)
-		print(current_position)
+func connect_points(line_start, line_end) -> void:
+	print(line_start)
+	print(line_end)
+	var line = line_scene.instantiate()
+	line.position = (line_start + line_end) / 2
+	add_child(line)
+	line.scale.z = line_start.distance_to(line_end)
+	line.look_at(line_end)
 			
 func remove_all_points() -> void:
 	for child in get_children():
