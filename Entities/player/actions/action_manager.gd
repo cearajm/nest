@@ -23,6 +23,6 @@ func init(player: Player) -> void:
 	
 func _input(event) -> void:
 	if event.is_action_pressed("right_click"):
-		print("action: " + place_point_action.description)
+		#print("action: " + place_point_action.description)
 		place_point_action.place_point()
 		
