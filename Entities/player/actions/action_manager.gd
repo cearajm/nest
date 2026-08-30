@@ -25,4 +25,6 @@ func _input(event) -> void:
 	if event.is_action_pressed("right_click"):
 		#print("action: " + place_point_action.description)
 		place_point_action.place_point()
+	elif event.is_action_pressed("left_click"):
+		place_point_action.remove_all_points()
 		

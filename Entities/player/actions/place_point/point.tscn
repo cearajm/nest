@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://bpoflgyp31qa4"]
+[gd_scene load_steps=3 format=3 uid="uid://bpoflgyp31qa4"]
+
+[ext_resource type="PackedScene" uid="uid://b4gibxrxnl8dr" path="res://Items/interaction_area.tscn" id="1_36nnl"]
+[ext_resource type="Script" uid="uid://dxt1eg8o0p6o7" path="res://Entities/player/actions/place_point/Point.gd" id="1_grlyh"]
 
 [node name="Point" type="Node3D"]
+script = ExtResource("1_grlyh")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(0.825, 0, 0, 0, 0.825, 0, 0, 0, 0.825, 0, 0.5, 0)
+
+[node name="InteractionArea" parent="." instance=ExtResource("1_36nnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
