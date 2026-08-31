@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dmgfhcoc2gh2h"]
+[gd_scene load_steps=35 format=4 uid="uid://dmgfhcoc2gh2h"]
 
 [ext_resource type="Script" uid="uid://bwx7atru1svlp" path="res://Entities/player/Player.gd" id="1_jopcf"]
 [ext_resource type="PackedScene" uid="uid://tr47xks2bmco" path="res://Entities/player/player_model.tscn" id="3_gu13x"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b5qygfmc0vhx4" path="res://Entities/player/inventory/inventory_slot.tscn" id="9_svuff"]
 [ext_resource type="Script" uid="uid://ba6rfhf14n20c" path="res://Entities/player/actions/action_manager.gd" id="10_svuff"]
 [ext_resource type="Script" uid="uid://dhb3xh8yowesg" path="res://Entities/player/actions/place_point/place_point.gd" id="11_hv2ka"]
+[ext_resource type="Script" uid="uid://bc57c73v3b82d" path="res://Entities/player/Journal.gd" id="12_uxo6o"]
+[ext_resource type="PackedScene" uid="uid://cdxhymtjuq11t" path="res://Entities/player/journal.tscn" id="13_ku0bj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5mgc"]
 
@@ -440,6 +442,12 @@ script = ExtResource("10_svuff")
 
 [node name="PlacePoint" type="Node" parent="ActionManager"]
 script = ExtResource("11_hv2ka")
+
+[node name="Journal" type="Node" parent="." node_paths=PackedStringArray("window")]
+script = ExtResource("12_uxo6o")
+window = NodePath("JournalWindow")
+
+[node name="JournalWindow" parent="Journal" instance=ExtResource("13_ku0bj")]
 
 [connection signal="body_entered" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="state_machine/attack" method="_on_area_3d_body_exited"]
